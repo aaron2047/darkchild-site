@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 — Ms. Darkchild</title>
+
+  <!-- Absolute paths: this page is served for ANY missing URL, so relative
+       paths would resolve against the requested path, not against /404.html -->
+  <link rel="icon" type="image/png" href="/darkchild-site/assets/images/favicon.png">
+
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body { margin:0; font-family:'Inter',sans-serif; background:#100E0C; color:#F0EDE8; min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:24px; }
@@ -13,15 +18,20 @@
     p     { color:#7A7672; font-size:15px; line-height:1.7; margin-bottom:32px; }
     a.btn { display:inline-block; font-family:'Inter',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#100E0C; background:#F5C518; padding:13px 28px; border-radius:3px; text-decoration:none; margin:0 6px; }
     a.ghost{ background:transparent; color:#F0EDE8; border:1px solid rgba(240,237,232,0.2); }
+    a.logo { display:inline-block; margin-bottom:26px; }
+    a.logo img { height:44px; width:auto; display:block; }
   </style>
 </head>
 <body>
   <div class="wrap">
+    <a href="/darkchild-site/" class="logo" aria-label="Ms. Darkchild - Home">
+      <img src="/darkchild-site/assets/images/logo-white.webp" alt="Ms. Darkchild logo" width="602" height="546">
+    </a>
     <div class="num">404</div>
     <div class="title">Beware — Wrong Stage</div>
     <p>You never know what you're going to get — and apparently that includes this page. Let's get you back to the show.</p>
-    <a href="/"        class="btn">Back Home</a>
-    <a href="/#shows"  class="btn ghost">View Shows</a>
+    <a href="/darkchild-site/"       class="btn">Back Home</a>
+    <a href="/darkchild-site/#shows" class="btn ghost">View Shows</a>
   </div>
 </body>
 </html>
