@@ -60,7 +60,7 @@ input, select, textarea { font-family: inherit; }
 /* ── BUTTONS ──────────────────────────────────────────────── */
 .btn {
   display: inline-block;
-  font-family: var(--font-body); font-size: 12px;
+  font-family: var(--font-body); font-size: 15px;
   font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
   padding: 13px 28px; border-radius: var(--radius);
   border: none; transition: background var(--transition), transform var(--transition);
@@ -74,18 +74,18 @@ input, select, textarea { font-family: inherit; }
 .btn--outline {
   color: var(--white); background: transparent;
   border: 1px solid var(--border-md); font-family: var(--font-mono);
-  font-size: 9px; letter-spacing: 0.12em;
+  font-size: 11px; letter-spacing: 0.12em;
 }
 .btn--outline:hover { border-color: var(--white); }
 
 .btn--outline-gold {
   color: var(--gold); background: transparent;
   border: 1px solid rgba(245,197,24,0.35);
-  font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em;
 }
 
-.btn--sm    { padding: 9px 18px; font-size: 11px; }
-.btn--xs    { padding: 8px 14px; font-size: 9px; }
+.btn--sm    { padding: 9px 18px; font-size: 13px; }
+.btn--xs    { padding: 8px 14px; font-size: 11px; }
 .btn--block { width: 100%; text-align: center; }
 
 /* ── LIVE DOT ─────────────────────────────────────────────── */
