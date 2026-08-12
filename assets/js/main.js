@@ -83,7 +83,7 @@ startQuoteTimer();
 // ── VIDEO EMBED ───────────────────────────────────────────────
 // Replace YOUR_VIDEO_ID below with a real YouTube video ID from @Datgirlcomedy
 // Get the ID from: youtube.com/watch?v=XXXXXXXXXXX → use XXXXXXXXXXX
-const VIDEO_ID = 'YOUR_VIDEO_ID';
+const VIDEO_ID = 'euowW8lpTnU';
 
 function loadVideo() {
   if (VIDEO_ID === 'YOUR_VIDEO_ID') {
