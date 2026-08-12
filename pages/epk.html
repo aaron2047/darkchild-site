@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Electronic Press Kit | Ms. Darkchild — Philadelphia Comedian</title>
+  <meta name="description" content="Official EPK for Ms. Darkchild (Anissa Bane) — Philadelphia's Princess of Comedy. Short & long bio, headshots, performance reel, credits, co-bills and booking contact. Live recording Aug 16 at Cannstatter Ballroom.">
+  <link rel="canonical" href="https://aaron2047.github.io/darkchild-site/pages/epk.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="profile">
+  <meta property="og:url"         content="https://aaron2047.github.io/darkchild-site/pages/epk.html">
+  <meta property="og:title"       content="Ms. Darkchild — Electronic Press Kit">
+  <meta property="og:description" content="Bio, headshots, reel, credits and booking contact for Ms. Darkchild — Philadelphia's Princess of Comedy since 1999.">
+  <meta property="og:image"       content="https://aaron2047.github.io/darkchild-site/assets/images/headshot.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@Datgirlcomedy">
+  <meta name="twitter:title"       content="Ms. Darkchild — Electronic Press Kit">
+  <meta name="twitter:description" content="Bio, headshots, reel, credits and booking contact for Philadelphia's Princess of Comedy.">
+  <meta name="twitter:image"       content="https://aaron2047.github.io/darkchild-site/assets/images/headshot.webp">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../assets/css/styles.css">
+
+  <!-- Page-scoped only: fact-sheet rows, asset thumbnails, print/PDF rules.
+       Everything else on this page uses the shared design system in styles.css. -->
+  <style>
+    /* Fact sheet — label / value rows */
+    .epk-facts { margin: 24px 0 28px; }
+    .epk-facts__row {
+      display: grid; grid-template-columns: 128px 1fr; gap: 14px;
+      padding: 9px 0; border-bottom: 1px solid var(--border);
+    }
+    .epk-facts__row dt {
+      font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold); padding-top: 2px;
+    }
+    .epk-facts__row dd { font-size: 13px; color: var(--white); }
+    .epk-facts__row dd span { color: var(--muted); }
+
+    /* Download cards — real thumbnails inside the shared merch-card shell */
+    .epk-asset .merch-card__img { overflow: hidden; padding: 0; }
+    .epk-asset .merch-card__img img { width: 100%; height: 100%; object-fit: cover; }
+    .epk-asset .merch-card__footer { gap: 12px; }
+
+    /* Bio word counts sit next to the section eyebrow */
+    .epk-wordcount {
+      font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em;
+      color: var(--muted); text-transform: uppercase;
+    }
+
+    /* Plain-text link sheet — screen-hidden, printed into the PDF */
+    .epk-printonly { display: none; }
+
+    @media (max-width: 600px) {
+      .epk-facts__row { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    /* ── PRINT / SAVE-AS-PDF ──────────────────────────────────
+       Browsers drop background graphics by default, so the dark
+       theme is re-tokenised to ink-on-paper instead of overriding
+       each rule individually. */
+    @media print {
+      :root {
+        --bg:        #FFFFFF;
+        --bg2:       #FFFFFF;
+        --bg3:       #FFFFFF;
+        --white:     #111111;
+        --muted:     #4A4A4A;
+        --gold:      #7A5F00;
+        --gold-dk:   #7A5F00;
+        --purple:    #4A2475;
+        --purple-lt: #4A2475;
+        --pink:      #8E1F58;
+        --border:    rgba(0,0,0,0.16);
+        --border-md: rgba(0,0,0,0.28);
+        --section-y: 22px;
+      }
+      @page { margin: 14mm; }
+
+      body { background: #fff; }
+
+      /* Motion is meaningless on paper, and a mid-flight transition can
+         freeze an element on its screen colour. */
+      *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+
+      /* Interactive chrome has no meaning on paper */
+      .live-banner, .nav, .nav__drawer, .nav__toggle,
+      .btn, .quote__dots, .watch__embed, .play-btn,
+      .footer__socials, .footer__pills, .footer__nav,
+      .show-feature__cta, .watch__social-pills { display: none !important; }
+
+      .shows__header       { background: #fff !important; padding: 18px 0 4px; }
+      .booking             { background: #fff !important; padding: 22px 0; }
+      .booking::before     { display: none !important; }
+      .about__badge--bottom{ background: #fff !important; color: #111 !important; border: 1px solid rgba(0,0,0,0.2) !important; }
+      .about__photo-card   { max-width: 210px; }
+      .about__photo-bar    { display: none !important; }
+      .impact              { padding: 18px 0; }
+
+      /* Ink-safe colour: anything that relies on a dropped background, an
+         inline style, or a hardcoded light hex would print invisible. */
+      .eyebrow[style]      { color: var(--gold) !important; }
+      .merch-card__badge--gold,
+      .merch-card__badge--pink {
+        color: #111 !important; background: none !important;
+        border: 1px solid rgba(0,0,0,0.3) !important;
+      }
+      .network-bar__logos span { color: #111 !important; }
+      .booking__contact,
+      .booking__contact a  { color: var(--gold) !important; }
+      .booking__sub        { color: var(--muted) !important; }
+      .accent--recording,
+      .show-feature__badge span:last-child { color: #A11111 !important; }
+      .timeline__bar { width: 0 !important; border-left: 2px solid var(--purple) !important; }
+
+      /* Carousel collapses to a static, fully-visible quote list */
+      .quotes { min-height: 0; }
+      .quote  {
+        position: relative !important; opacity: 1 !important;
+        inset: auto; margin-bottom: 20px; transition: none !important;
+      }
+
+      .epk-printonly { display: block; }
+
+      .section, .impact, .network-bar, .cobills,
+      .show-feature__inner, .watch__grid { break-inside: auto; }
+      .merch-card, .show-feature, .timeline__item,
+      .quote, .epk-facts__row { break-inside: avoid; }
+      h1, h2, h3 { break-after: avoid; }
+    }
+  </style>
+
+  <!-- Structured Data — Person schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ms. Darkchild",
+    "alternateName": "Anissa Bane",
+    "jobTitle": "Stand-Up Comedian, Host, Actress, Producer",
+    "description": "Philadelphia comedian, host, actress and producer since 1999. The Princess of Comedy. Founder of Absolute Soul Entertainment LLC.",
+    "url": "https://aaron2047.github.io/darkchild-site/",
+    "mainEntityOfPage": "https://aaron2047.github.io/darkchild-site/pages/epk.html",
+    "image": "https://aaron2047.github.io/darkchild-site/assets/images/headshot.webp",
+    "telephone": "+12677023275",
+    "email": "MsDarkChild@msdarkchildcomedy.com",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Absolute Soul Entertainment LLC"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Philadelphia",
+      "addressRegion": "PA",
+      "addressCountry": "US"
+    },
+    "sameAs": [
+      "https://www.instagram.com/datgirlcomedy/",
+      "https://www.facebook.com/Msdarkchild",
+      "https://www.youtube.com/@Datgirlcomedy"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════
+       LIVE EVENT BANNER — Aug 16
+  ═══════════════════════════════════════ -->
+  <div class="live-banner" id="live-banner">
+    <div class="live-banner__inner">
+      <div class="live-banner__left">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span class="live-label">LIVE RECORDING</span>
+        <div class="live-divider" aria-hidden="true"></div>
+        <span class="live-title">Days of Our Lives — Comedy Edition</span>
+        <span class="live-meta">SUN AUG 16 · CANNSTATTER BALLROOM · PHILA PA</span>
+        <div class="live-networks" aria-label="Featuring comedians from">
+          <span>SHOWTIME</span><span>HBO</span><span>FOX</span><span>BET</span>
+        </div>
+      </div>
+      <div class="live-banner__right">
+        <a href="#show" class="btn btn--gold btn--sm">SHOW DETAILS</a>
+        <button class="live-close" onclick="document.getElementById('live-banner').remove()" aria-label="Dismiss">×</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       NAV
+  ═══════════════════════════════════════ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <a href="../index.html" class="nav__logo">Ms. <span>Darkchild</span></a>
+
+    <ul class="nav__links" role="list">
+      <li><a href="#bio">Bio</a></li>
+      <li><a href="#show">Aug 16</a></li>
+      <li><a href="#credits">Credits</a></li>
+      <li><a href="#reel">Reel</a></li>
+      <li><a href="#press">Press</a></li>
+      <li><a href="#downloads">Downloads</a></li>
+      <li><a href="../index.html">Main Site</a></li>
+    </ul>
+
+    <a href="#booking" class="btn btn--gold btn--sm nav__cta">Book Her</a>
+
+    <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile nav drawer -->
+  <div class="nav__drawer" id="nav-drawer" aria-hidden="true">
+    <ul role="list">
+      <li><a href="#bio"       onclick="closeNav()">Bio</a></li>
+      <li><a href="#show"      onclick="closeNav()">Aug 16</a></li>
+      <li><a href="#credits"   onclick="closeNav()">Credits</a></li>
+      <li><a href="#reel"      onclick="closeNav()">Reel</a></li>
+      <li><a href="#press"     onclick="closeNav()">Press</a></li>
+      <li><a href="#downloads" onclick="closeNav()">Downloads</a></li>
+      <li><a href="../index.html">Main Site</a></li>
+      <li><a href="#booking"   onclick="closeNav()" class="btn btn--gold btn--block">Book Her</a></li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       PAGE HEADER
+  ═══════════════════════════════════════ -->
+  <header class="shows__header" aria-labelledby="epk-heading">
+    <div class="container">
+      <div class="shows__header-inner">
+        <div>
+          <p class="eyebrow eyebrow--mono" style="color:rgba(245,197,24,0.85)">
+            Press &amp; Media · Updated August 2026
+          </p>
+          <h1 class="shows__title" id="epk-heading">Electronic Press Kit</h1>
+        </div>
+        <div class="hero__actions" style="margin-bottom:0">
+          <!-- Opens the browser print dialog against the print stylesheet above →
+               "Save as PDF". Swap in a static file later if one is produced:
+               <a href="../assets/ms-darkchild-epk.pdf" class="btn btn--gold" download>Download EPK — PDF</a> -->
+          <button type="button" class="btn btn--gold" onclick="window.print()">Download EPK — PDF</button>
+          <a href="#downloads" class="btn btn--outline">Press Assets</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════
+       QUICK STATS
+  ═══════════════════════════════════════ -->
+  <section class="impact" aria-label="Career at a glance">
+    <div class="container">
+      <div class="impact__grid">
+        <div class="impact__stat">
+          <span class="impact__num">25+</span>
+          <span class="impact__label">Years Performing</span>
+        </div>
+        <div class="impact__stat">
+          <span class="impact__num">1999</span>
+          <span class="impact__label">Started in Comedy</span>
+        </div>
+        <div class="impact__stat">
+          <span class="impact__num">4.5K</span>
+          <span class="impact__label">Instagram Followers</span>
+        </div>
+        <div class="impact__stat">
+          <span class="impact__num">4</span>
+          <span class="impact__label">Professional Roles</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       IDENTITY + SHORT BIO
+  ═══════════════════════════════════════ -->
+  <section class="about section" id="bio" aria-labelledby="bio-heading">
+    <div class="container">
+      <div class="about__grid">
+
+        <!-- Headshot card -->
+        <div class="about__photo-wrap">
+          <div class="about__photo-card">
+            <img
+              src="../assets/images/headshot.webp"
+              alt="Ms. Darkchild headshot — Anissa Bane, Philadelphia comedian"
+              width="400" height="496"
+            >
+            <div class="about__photo-bar" aria-hidden="true"></div>
+          </div>
+          <div class="about__badge about__badge--top">Absolute Soul Entertainment LLC</div>
+          <div class="about__badge about__badge--bottom">#walkinginmyseason</div>
+        </div>
+
+        <!-- Identity + short bio -->
+        <div class="about__text">
+          <p class="eyebrow eyebrow--mono">Ms. Darkchild · Anissa Bane</p>
+          <h2 class="about__heading" id="bio-heading">
+            The Princess<br>of Comedy
+          </h2>
+
+          <blockquote class="about__quote">
+            <p>"I'm where I am suppose to be. My journey my story."</p>
+            <cite>— Anissa Bane, @datgirlcomedy</cite>
+          </blockquote>
+
+          <p class="eyebrow eyebrow--mono">
+            One-Line Bio <span class="epk-wordcount">· 20 words</span>
+          </p>
+          <p class="about__copy">
+            <strong>Ms. Darkchild is a Philadelphia stand-up comedian, host, actress and producer
+            who has worked stages across the city since 1999.</strong>
+          </p>
+
+          <p class="eyebrow eyebrow--mono" style="margin-top:26px">
+            Short Bio <span class="epk-wordcount">· 63 words</span>
+          </p>
+          <p class="about__copy">
+            Anissa Bane — better known as <strong>Ms. Darkchild</strong>, Philadelphia's Princess of
+            Comedy — has been working stages across the city since 1999 as a stand-up, host, actress
+            and producer, and is the founder of <strong>Absolute Soul Entertainment LLC</strong>.
+            She has been featured on <strong class="accent--pink">FOX 29 Philadelphia</strong>, shared
+            bills with Michael Blackson, Cocoa Brown and Rodney Perry, and is developing her original
+            stage play, <em>"Tenant Eviction."</em>
+          </p>
+
+          <div class="hero__actions" style="margin-top:28px; margin-bottom:0">
+            <a href="../assets/images/headshot.webp" class="btn btn--gold"
+               download="MsDarkchild-Headshot.webp">Download Headshot</a>
+            <a href="#downloads" class="btn btn--outline">All Press Assets</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       LONG BIO + FACT SHEET
+  ═══════════════════════════════════════ -->
+  <section class="about section" style="background:var(--bg2); border-top:1px solid var(--border)"
+           aria-labelledby="longbio-heading">
+    <div class="container">
+      <div class="about__grid">
+
+        <!-- Fact sheet -->
+        <div class="about__text">
+          <p class="eyebrow eyebrow--mono">Fact Sheet</p>
+          <dl class="epk-facts">
+            <div class="epk-facts__row">
+              <dt>Stage Name</dt><dd>Ms. Darkchild</dd>
+            </div>
+            <div class="epk-facts__row">
+              <dt>Given Name</dt><dd>Anissa Bane</dd>
+            </div>
+            <div class="epk-facts__row">
+              <dt>Billed As</dt><dd>The Princess of Comedy</dd>
+            </div>
+            <div class="epk-facts__row">
+              <dt>Based In</dt><dd>Philadelphia, PA</dd>
+            </div>
+            <div class="epk-facts__row">
+              <dt>Active Since</dt><dd>1999 <span>· 25+ years</span></dd>
+            </div>
+            <div class="epk-facts__row">
+              <dt>Roles</dt><dd>Stand-up · Host / MC · Actress · Producer · Artist Manager</dd>
+            </div>
+            <div class="epk-facts__row">
+              <dt>Formats</dt><dd>Clean and unclean sets · Headline · Feature · Host</dd>
+            </div>
+            <div class="epk-facts__row">
+              <dt>Books For</dt><dd>Clubs · Theatres · Corporate · Private parties · Expos · Community events</dd>
+            </div>
+            <div class="epk-facts__row">
+              <dt>Company</dt><dd>Absolute Soul Entertainment LLC</dd>
+            </div>
+            <div class="epk-facts__row">
+              <dt>Social</dt><dd>@datgirlcomedy <span>· IG / FB / YouTube</span></dd>
+            </div>
+            <div class="epk-facts__row">
+              <dt>Hashtags</dt><dd><span>#walkinginmyseason · #cornyandcocky</span></dd>
+            </div>
+            <div class="epk-facts__row">
+              <dt>Booking</dt>
+              <dd>
+                <a href="mailto:MsDarkChild@msdarkchildcomedy.com" class="accent--gold">MsDarkChild@msdarkchildcomedy.com</a><br>
+                <a href="tel:2677023275" class="accent--gold">267-702-DARK (3275)</a>
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Long bio -->
+        <div class="about__text">
+          <p class="eyebrow eyebrow--mono">
+            Long Bio <span class="epk-wordcount">· 260 words</span>
+          </p>
+          <h2 class="about__heading" id="longbio-heading" style="font-size:clamp(38px,4.5vw,56px)">
+            Philly's Own,<br>Since 1999
+          </h2>
+
+          <p class="about__copy">
+            <strong>Anissa Bane</strong> has been making Philadelphia laugh since 1999. Working as
+            <strong>Ms. Darkchild</strong> — the Princess of Comedy — she has built a career now
+            running more than 25 years as a stand-up comedian, host, actress and producer, and is the
+            founder of <strong>Absolute Soul Entertainment LLC</strong>.
+          </p>
+          <p class="about__copy">
+            Her start came at the <strong>Saffron House of Comedy</strong>, where a weekly host segment
+            turned into a stand-up career. By 2001 she had folded hosting into the act, growing into
+            the full multilateral entertainer she is today — a performer who can work a room clean in
+            the afternoon and take the same crowd somewhere else entirely by the evening show.
+          </p>
+          <p class="about__copy">
+            Since 2012 she has shared bills with <strong>Michael Blackson, Cocoa Brown, Rodney Perry,
+            Damon Williams, Rob Stapleton</strong> and <strong>Tommy 2 Smooth</strong>, and worked
+            stages including <strong>The Colonial Theatre</strong> in Phoenixville and
+            <strong>Cannstatter Ballroom</strong> in Philadelphia, alongside long-running showcases
+            <strong>Women of Comedy, Soul Jam</strong> and <strong>Juke Sistas</strong>. In 2026 she
+            was featured on <strong class="accent--pink">FOX 29 Philadelphia</strong>.
+          </p>
+          <p class="about__copy">
+            On screen she appeared as Renee Brown in <em>"The Whispering Bench."</em> She is currently
+            developing an original stage play, <em>"Tenant Eviction,"</em> and produces her own live
+            events under Absolute Soul Entertainment — including
+            <strong>"Days of Our Lives — Comedy Edition,"</strong> a live recording taping
+            <strong>August 16 at Cannstatter Ballroom</strong> that pairs a clean afternoon set with an
+            unclean evening show and karaoke comedy.
+          </p>
+          <p class="about__copy">
+            Ms. Darkchild books as a headliner, a feature and a host, and works corporate events,
+            private parties, expos and community shows alongside club and theatre dates. Her merch
+            line, <strong>Walking in My Season</strong>, runs at her shows and online.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FEATURED SHOW — Aug 16
+  ═══════════════════════════════════════ -->
+  <section id="show" aria-labelledby="show-heading">
+    <div class="shows__header">
+      <div class="container">
+        <div class="shows__header-inner">
+          <h2 class="shows__title" id="show-heading">Aug 16 · Live Recording</h2>
+          <a href="../index.html#shows" class="btn btn--gold">All Upcoming Shows</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="show-feature" aria-label="Featured show — August 16 live recording">
+      <div class="container">
+        <div class="show-feature__inner">
+
+          <div class="show-feature__badge">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span>LIVE RECORDING EVENT</span>
+          </div>
+
+          <div class="show-feature__grid">
+            <div class="show-feature__date" aria-label="August 16">
+              <span class="show-month">AUG</span>
+              <span class="show-day">16</span>
+              <span class="show-dow">SUNDAY</span>
+            </div>
+
+            <div class="show-feature__info">
+              <h3 class="show-feature__name">
+                Days of Our Lives<br>Comedy Edition
+              </h3>
+              <p class="show-feature__venue">
+                Cannstatter Ballroom · 9130 Academy Rd, Philadelphia PA 19114
+              </p>
+              <ul class="show-feature__times" aria-label="Show times">
+                <li>✦ Clean Comedy 3PM–4PM</li>
+                <li>✦ Unclean 6PM–8PM</li>
+                <li>✦ Karaoke Comedy included</li>
+              </ul>
+              <p class="show-feature__lineup">
+                <span class="show-feature__lineup-label">Featuring:</span>
+                Nate The Landlord · Shawn Harvey · Josh Kosh · Timmy Hall
+              </p>
+              <p class="show-feature__lineup">
+                <span class="show-feature__lineup-label">Press note:</span>
+                Hosted and produced by Ms. Darkchild under Absolute Soul Entertainment LLC.
+                Video from the taping drops to YouTube after the show.
+              </p>
+              <div class="show-feature__networks" aria-label="Networks represented on the bill">
+                <span>SHOWTIME</span><span>HBO</span><span>FOX</span><span>BET</span>
+              </div>
+            </div>
+
+            <div class="show-feature__cta">
+              <a href="../index.html#shows" class="btn btn--gold">Get Tickets</a>
+              <a href="#booking" class="btn btn--outline btn--sm">PRESS RSVP</a>
+              <p class="show-feature__host">HOSTED BY<br><strong>MS.DARKCHILD</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       CREDITS
+  ═══════════════════════════════════════ -->
+  <section id="credits" aria-labelledby="credits-heading">
+
+    <!-- Network / press bar -->
+    <div class="network-bar" aria-label="Bills and press">
+      <div class="container">
+        <p class="network-bar__label">Shares Bills With Comedians From</p>
+        <div class="network-bar__logos">
+          <span class="net-showtime">SHOWTIME</span>
+          <span class="net-hbo">HBO</span>
+          <span class="net-cc">COMEDY CENTRAL</span>
+          <span class="net-fox">FOX</span>
+          <span class="net-bet">BET</span>
+        </div>
+        <div class="press-strip">
+          <span>FOX 29 Philadelphia</span>
+          <span>The Colonial Theatre</span>
+          <span>Cannstatter Ballroom</span>
+          <span>Women of Comedy</span>
+          <span>Soul Jam</span>
+          <span>Juke Sistas</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Co-bills -->
+    <div class="cobills" aria-label="Performed alongside">
+      <div class="container">
+        <p class="eyebrow eyebrow--mono cobills__label">Performed Alongside</p>
+        <div class="cobills__names">
+          <span>Michael Blackson</span><span>Cocoa Brown</span><span>Rodney Perry</span>
+          <span>Damon Williams</span><span>Rob Stapleton</span><span>Tommy 2 Smooth</span>
+          <span>Capone</span><span>B-Phat</span><span>JoaFunnyMan</span><span>Nate The Landlord</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Selected credits + career timeline -->
+    <div class="merch section">
+      <div class="container">
+        <div class="merch__header">
+          <p class="eyebrow eyebrow--mono">Television · Screen · Stage</p>
+          <h2 id="credits-heading" class="merch__title">Selected <span class="accent--gold">Credits</span></h2>
+        </div>
+
+        <div class="merch__grid">
+
+          <article class="merch-card">
+            <div class="merch-card__badge merch-card__badge--gold">Television</div>
+            <div class="merch-card__img" aria-hidden="true">📺</div>
+            <p class="merch-card__color">FOX 29 · Philadelphia</p>
+            <h3 class="merch-card__name">Featured Appearance</h3>
+            <p class="merch-card__sub">Local television feature, 2026</p>
+          </article>
+
+          <article class="merch-card">
+            <div class="merch-card__img" aria-hidden="true">🎬</div>
+            <p class="merch-card__color">Screen · Acting</p>
+            <h3 class="merch-card__name">The Whispering Bench</h3>
+            <p class="merch-card__sub">Role: Renee Brown</p>
+          </article>
+
+          <article class="merch-card">
+            <div class="merch-card__badge merch-card__badge--pink">In Development</div>
+            <div class="merch-card__img" aria-hidden="true">🎭</div>
+            <p class="merch-card__color">Original Stage Play</p>
+            <h3 class="merch-card__name">Tenant Eviction</h3>
+            <p class="merch-card__sub">Written and developed by Ms. Darkchild</p>
+          </article>
+
+        </div>
+
+        <div class="about__grid" style="margin-top:56px; align-items:start">
+          <div class="about__text">
+            <p class="eyebrow eyebrow--mono">Career Timeline</p>
+            <ul class="timeline" aria-label="Career milestones">
+              <li class="timeline__item">
+                <span class="timeline__year">1999</span>
+                <div class="timeline__bar" aria-hidden="true"></div>
+                <div class="timeline__text">
+                  <strong>Started comedy</strong>
+                  <span>Saffron House of Comedy — weekly host segment</span>
+                </div>
+              </li>
+              <li class="timeline__item">
+                <span class="timeline__year">2001</span>
+                <div class="timeline__bar" aria-hidden="true"></div>
+                <div class="timeline__text">
+                  <strong>Added hosting</strong>
+                  <span>Expanded to full multilateral entertainer</span>
+                </div>
+              </li>
+              <li class="timeline__item">
+                <span class="timeline__year">2012+</span>
+                <div class="timeline__bar" aria-hidden="true"></div>
+                <div class="timeline__text">
+                  <strong>Major co-bills</strong>
+                  <span>Michael Blackson, Cocoa Brown, Rodney Perry &amp; more</span>
+                </div>
+              </li>
+              <li class="timeline__item">
+                <span class="timeline__year">2026</span>
+                <div class="timeline__bar" aria-hidden="true"></div>
+                <div class="timeline__text">
+                  <strong>FOX 29 + Live Recording</strong>
+                  <span>Television appearance + "Days of Our Lives" event</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="about__text">
+            <p class="eyebrow eyebrow--mono">Also Known For</p>
+            <p class="about__copy">
+              Founder and producer at <strong>Absolute Soul Entertainment LLC</strong>, booking and
+              staging her own live comedy events across Philadelphia and the region.
+            </p>
+            <p class="about__copy">
+              Artist manager and host for showcase nights including
+              <strong>Women of Comedy</strong>, <strong>Soul Jam</strong> and
+              <strong>Juke Sistas</strong>.
+            </p>
+            <p class="about__copy">
+              Creator of the <strong>Walking in My Season</strong> merch line — hoodies, long-sleeves
+              and tees sold at shows and online.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PERFORMANCE REEL
+  ═══════════════════════════════════════ -->
+  <section class="watch section" id="reel" aria-labelledby="reel-heading">
+    <div class="container">
+      <div class="watch__grid">
+        <div class="watch__text">
+          <p class="eyebrow eyebrow--mono">Performance Reel</p>
+          <h2 id="reel-heading" class="watch__heading">
+            Watch Her<br><span class="accent--gold">Work</span>
+          </h2>
+          <p class="watch__copy">
+            15+ reels on Facebook — performance clips, show highlights and crowd work. The Aug 16
+            live recording drops to YouTube after the show. For a specific clip, a full-length set,
+            or raw footage for a segment, contact booking below.
+          </p>
+
+          <div class="watch__socials">
+            <p class="eyebrow eyebrow--mono">Reel &amp; Channels</p>
+            <div class="watch__social-pills">
+              <a href="https://www.youtube.com/@Datgirlcomedy" target="_blank" rel="noopener">YOUTUBE</a>
+              <a href="https://www.facebook.com/Msdarkchild/owner_reels" target="_blank" rel="noopener">FACEBOOK REELS</a>
+              <a href="https://www.instagram.com/datgirlcomedy/" target="_blank" rel="noopener">INSTAGRAM</a>
+              <a href="https://www.facebook.com/Msdarkchild" target="_blank" rel="noopener">FACEBOOK</a>
+            </div>
+          </div>
+
+          <a href="https://www.youtube.com/@Datgirlcomedy" class="btn btn--gold" target="_blank" rel="noopener">
+            Watch the Reel
+          </a>
+        </div>
+
+        <!-- YouTube embed slot — set VIDEO_ID in assets/js/main.js to embed inline -->
+        <div class="watch__embed">
+          <div class="watch__embed-placeholder" id="video-placeholder">
+            <button class="play-btn" onclick="loadVideo()" aria-label="Load video reel">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <polygon points="7,3 22,12 7,21" fill="#100E0C"/>
+              </svg>
+            </button>
+            <p>Performance Reel — Click to Watch</p>
+            <span>Aug 16 recording dropping soon</span>
+          </div>
+          <div id="video-frame" style="display:none; width:100%; height:100%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="watch__alert">
+      <div class="container">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span class="accent--recording">LIVE RECORDING</span>
+        <span>August 16, 2026 — Cannstatter Ballroom, Philadelphia. Press and media welcome; contact booking for credentials.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PRESS QUOTES
+  ═══════════════════════════════════════ -->
+  <section class="press section" id="press" aria-labelledby="press-heading">
+    <div class="container">
+      <p class="eyebrow eyebrow--mono" id="press-heading" style="text-align:center">What They're Saying</p>
+
+      <div class="quotes" id="quotes" aria-live="polite">
+        <blockquote class="quote quote--active" data-idx="0">
+          <div class="quote__mark" aria-hidden="true">"</div>
+          <p>She had the whole room going. Never knew what was coming next — that's the mark of a real comedian.</p>
+          <footer><cite>— The Colonial Theatre, Phoenixville PA</cite></footer>
+        </blockquote>
+        <blockquote class="quote" data-idx="1">
+          <div class="quote__mark" aria-hidden="true">"</div>
+          <p>Ms. Darkchild brings a passion and a vision to comedy and hosting — she wants to revolutionize the way people view comedy.</p>
+          <footer><cite>— Press Bio</cite></footer>
+        </blockquote>
+        <blockquote class="quote" data-idx="2">
+          <div class="quote__mark" aria-hidden="true">"</div>
+          <p>Beware is right. You truly never know what you're going to get — and that's exactly why you keep coming back.</p>
+          <footer><cite>— Fan Review, GigSalad</cite></footer>
+        </blockquote>
+      </div>
+
+      <div class="quote__dots" role="tablist" aria-label="Quote navigation">
+        <button class="dot dot--active" data-q="0" aria-label="Quote 1" role="tab"></button>
+        <button class="dot"             data-q="1" aria-label="Quote 2" role="tab"></button>
+        <button class="dot"             data-q="2" aria-label="Quote 3" role="tab"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       DOWNLOADS / PRESS ASSETS
+  ═══════════════════════════════════════ -->
+  <section class="merch section" id="downloads" aria-labelledby="downloads-heading">
+    <div class="container">
+      <div class="merch__header">
+        <p class="eyebrow eyebrow--mono">Press Assets · Free to use with credit</p>
+        <h2 id="downloads-heading" class="merch__title">Download <span class="accent--gold">Kit</span></h2>
+      </div>
+
+      <div class="merch__grid">
+
+        <article class="merch-card epk-asset">
+          <div class="merch-card__badge merch-card__badge--gold">Primary</div>
+          <div class="merch-card__img">
+            <img src="../assets/images/headshot.webp"
+                 alt="Ms. Darkchild press headshot" width="500" height="620" loading="lazy">
+          </div>
+          <p class="merch-card__color">WEBP · 500 × 620 · Web res</p>
+          <h3 class="merch-card__name">Press Headshot</h3>
+          <p class="merch-card__sub">Vertical headshot for listings and previews</p>
+          <div class="merch-card__footer">
+            <a href="../assets/images/headshot.webp" class="btn btn--gold btn--xs"
+               download="MsDarkchild-Headshot.webp">DOWNLOAD</a>
+          </div>
+        </article>
+
+        <article class="merch-card epk-asset">
+          <div class="merch-card__img">
+            <img src="../assets/images/hero.webp"
+                 alt="Ms. Darkchild on stage, mic raised to the lights" width="1327" height="690" loading="lazy">
+          </div>
+          <p class="merch-card__color">WEBP · 1327 × 690 · Web res</p>
+          <h3 class="merch-card__name">Live Performance Photo</h3>
+          <p class="merch-card__sub">Horizontal stage shot for banners and features</p>
+          <div class="merch-card__footer">
+            <a href="../assets/images/hero.webp" class="btn btn--gold btn--xs"
+               download="MsDarkchild-Live.webp">DOWNLOAD</a>
+          </div>
+        </article>
+
+        <article class="merch-card epk-asset">
+          <div class="merch-card__badge merch-card__badge--pink">One-Sheet</div>
+          <div class="merch-card__img" aria-hidden="true">📄</div>
+          <p class="merch-card__color">PDF · This page, print-formatted</p>
+          <h3 class="merch-card__name">Full EPK — PDF</h3>
+          <p class="merch-card__sub">Bio, credits, show details and contact</p>
+          <div class="merch-card__footer">
+            <button type="button" class="btn btn--gold btn--xs" onclick="window.print()">SAVE AS PDF</button>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="merch__footer-note">
+        Photo credit: Ms. Darkchild / Absolute Soul Entertainment LLC ·
+        Higher-resolution and print-ready files available on request
+      </p>
+      <a href="#booking" class="btn btn--outline">Request Hi-Res Files</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       BOOKING CONTACT
+  ═══════════════════════════════════════ -->
+  <section class="booking" id="booking" aria-labelledby="booking-heading">
+    <div class="container">
+      <div class="booking__inner">
+        <p class="eyebrow eyebrow--mono" style="color:rgba(245,197,24,0.8)">Booking &amp; Press Contact</p>
+        <h2 id="booking-heading" class="booking__title">
+          Book<br><span class="accent--gold">Ms. Darkchild</span>
+        </h2>
+        <p class="booking__sub">
+          Stand-up · hosting · private events · corporate shows · expos<br>
+          Interview requests, press credentials and hi-res assets — same contact.
+        </p>
+
+        <div class="hero__actions" style="justify-content:center; margin-bottom:28px">
+          <a href="mailto:MsDarkChild@msdarkchildcomedy.com?subject=Booking%20Inquiry%20—%20Ms.%20Darkchild"
+             class="btn btn--gold">Email Booking</a>
+          <a href="tel:2677023275" class="btn btn--outline">Call 267-702-DARK</a>
+          <a href="../index.html#booking" class="btn btn--outline">Booking Form</a>
+        </div>
+
+        <p class="booking__contact">
+          Absolute Soul Entertainment LLC · Philadelphia, PA<br>
+          <a href="mailto:MsDarkChild@msdarkchildcomedy.com">MsDarkChild@msdarkchildcomedy.com</a>
+          &nbsp;·&nbsp;
+          <a href="tel:2677023275">267-702-DARK (3275)</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PRINT-ONLY LINK SHEET
+       Hidden on screen; carries the URLs into the PDF.
+  ═══════════════════════════════════════ -->
+  <section class="epk-printonly section" aria-hidden="true">
+    <div class="container">
+      <p class="eyebrow eyebrow--mono">Links &amp; Contact</p>
+      <dl class="epk-facts">
+        <div class="epk-facts__row"><dt>EPK</dt><dd>aaron2047.github.io/darkchild-site/pages/epk.html</dd></div>
+        <div class="epk-facts__row"><dt>Website</dt><dd>aaron2047.github.io/darkchild-site</dd></div>
+        <div class="epk-facts__row"><dt>YouTube</dt><dd>youtube.com/@Datgirlcomedy</dd></div>
+        <div class="epk-facts__row"><dt>Facebook</dt><dd>facebook.com/Msdarkchild</dd></div>
+        <div class="epk-facts__row"><dt>Reels</dt><dd>facebook.com/Msdarkchild/owner_reels</dd></div>
+        <div class="epk-facts__row"><dt>Instagram</dt><dd>instagram.com/datgirlcomedy</dd></div>
+        <div class="epk-facts__row"><dt>Email</dt><dd>MsDarkChild@msdarkchildcomedy.com</dd></div>
+        <div class="epk-facts__row"><dt>Phone</dt><dd>267-702-DARK (3275)</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <p class="footer__logo">Ms. <span>Darkchild</span></p>
+          <p class="footer__tagline">THE PRINCESS OF COMEDY · PHILADELPHIA, PA · EST. 1999</p>
+          <p class="footer__hashtags">#walkinginmyseason · #cornyandcocky</p>
+          <p class="footer__contact">
+            <a href="mailto:MsDarkChild@msdarkchildcomedy.com">MsDarkChild@msdarkchildcomedy.com</a><br>
+            <a href="tel:2677023275">267-702-DARK</a>
+          </p>
+          <div class="footer__socials">
+            <a href="https://www.instagram.com/datgirlcomedy/" target="_blank" rel="noopener">INSTAGRAM</a>
+            <a href="https://www.facebook.com/Msdarkchild"     target="_blank" rel="noopener">FACEBOOK</a>
+            <a href="https://www.youtube.com/@Datgirlcomedy"   target="_blank" rel="noopener">YOUTUBE</a>
+          </div>
+          <div class="footer__pills">
+            <a href="../index.html"       class="pill pill--purple">MAIN SITE</a>
+            <a href="../index.html#merch" class="pill pill--gold">SHOP MERCH</a>
+          </div>
+        </div>
+
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <a href="#bio">Bio</a>
+          <a href="#show">Aug 16</a>
+          <a href="#credits">Credits</a>
+          <a href="#reel">Reel</a>
+          <a href="#downloads">Downloads</a>
+          <a href="#booking">Book Her</a>
+          <a href="../index.html">Main Site</a>
+        </nav>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2026 Absolute Soul Entertainment LLC · All Rights Reserved</p>
+        <p>PHILA, PA · @DATGIRLCOMEDY</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts — shared with the homepage -->
+  <script src="../assets/js/main.js" defer></script>
+
+</body>
+</html>
