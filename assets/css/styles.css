@@ -145,6 +145,9 @@ input, select, textarea { font-family: inherit; }
   letter-spacing: 0.04em; color: var(--white);
 }
 .nav__logo span { color: var(--gold); }
+/* Logo mark. Intrinsic size is set on the img (602x546) so the browser
+   reserves the right box before decode; height here drives display size. */
+.nav__logo img { height: 44px; width: auto; display: block; }
 
 .nav__links {
   display: flex; align-items: center; gap: 22px;
