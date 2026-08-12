@@ -179,6 +179,25 @@
 <body>
 
   <!-- ═══════════════════════════════════════
+       SOCIAL ICON SPRITE — matches index.html
+  ═══════════════════════════════════════ -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="ico-ig" viewBox="0 0 24 24">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="17.6" cy="6.4" r="1.4" fill="currentColor"/>
+    </symbol>
+    <symbol id="ico-fb" viewBox="0 0 24 24">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M15.4 8.4h-1.6c-.6 0-1 .4-1 1v1.8h2.5l-.4 2.6h-2.1v6h-2.6v-6H8.6v-2.6h1.6V9.6c0-2 1.2-3.2 3.1-3.2h2.1v2z" fill="currentColor"/>
+    </symbol>
+    <symbol id="ico-yt" viewBox="0 0 24 24">
+      <rect x="1.5" y="4.5" width="21" height="15" rx="4.5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M10.2 8.6l5.6 3.4-5.6 3.4z" fill="currentColor"/>
+    </symbol>
+  </svg>
+
+  <!-- ═══════════════════════════════════════
        LIVE EVENT BANNER — Aug 16
   ═══════════════════════════════════════ -->
   <div class="live-banner" id="live-banner">
@@ -207,16 +226,14 @@
     <a href="../index.html" class="nav__logo">Ms. <span>Darkchild</span></a>
 
     <ul class="nav__links" role="list">
-      <li><a href="#bio">Bio</a></li>
-      <li><a href="#show">Aug 16</a></li>
-      <li><a href="#credits">Credits</a></li>
-      <li><a href="#reel">Reel</a></li>
-      <li><a href="#press">Press</a></li>
-      <li><a href="#downloads">Downloads</a></li>
-      <li><a href="../index.html">Main Site</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#shows">Shows</a></li>
+      <li><a href="../index.html#watch">Watch</a></li>
+      <li><a href="../index.html#press">Press</a></li>
+      <li><a href="../index.html#merch">Merch</a></li>
     </ul>
 
-    <a href="#booking" class="btn btn--gold btn--sm nav__cta">Book Her</a>
+    <a href="../index.html#booking" class="btn btn--gold btn--sm nav__cta">Book Her</a>
 
     <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -226,14 +243,12 @@
   <!-- Mobile nav drawer -->
   <div class="nav__drawer" id="nav-drawer" aria-hidden="true">
     <ul role="list">
-      <li><a href="#bio"       onclick="closeNav()">Bio</a></li>
-      <li><a href="#show"      onclick="closeNav()">Aug 16</a></li>
-      <li><a href="#credits"   onclick="closeNav()">Credits</a></li>
-      <li><a href="#reel"      onclick="closeNav()">Reel</a></li>
-      <li><a href="#press"     onclick="closeNav()">Press</a></li>
-      <li><a href="#downloads" onclick="closeNav()">Downloads</a></li>
-      <li><a href="../index.html">Main Site</a></li>
-      <li><a href="#booking"   onclick="closeNav()" class="btn btn--gold btn--block">Book Her</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#shows">Shows</a></li>
+      <li><a href="../index.html#watch">Watch</a></li>
+      <li><a href="../index.html#press">Press</a></li>
+      <li><a href="../index.html#merch">Merch</a></li>
+      <li><a href="../index.html#booking" class="btn btn--gold btn--block">Book Her</a></li>
     </ul>
   </div>
 
@@ -244,7 +259,7 @@
     <div class="container">
       <div class="shows__header-inner">
         <div>
-          <p class="eyebrow eyebrow--mono" style="color:rgba(245,197,24,0.85)">
+          <p class="eyebrow eyebrow--mono">
             Press &amp; Media · Updated August 2026
           </p>
           <h1 class="shows__title" id="epk-heading">Electronic Press Kit</h1>
@@ -289,7 +304,15 @@
   <!-- ═══════════════════════════════════════
        IDENTITY + SHORT BIO
   ═══════════════════════════════════════ -->
-  <section class="about section" id="bio" aria-labelledby="bio-heading">
+  <div class="shows__header" id="bio">
+    <div class="container">
+      <div class="shows__header-inner">
+        <h2 class="shows__title" id="bio-heading">Biography</h2>
+      </div>
+    </div>
+  </div>
+
+  <section class="about section" aria-labelledby="bio-heading">
     <div class="container">
       <div class="about__grid">
 
@@ -310,9 +333,9 @@
         <!-- Identity + short bio -->
         <div class="about__text">
           <p class="eyebrow eyebrow--mono">Ms. Darkchild · Anissa Bane</p>
-          <h2 class="about__heading" id="bio-heading">
+          <h3 class="about__heading">
             The Princess<br>of Comedy
-          </h2>
+          </h3>
 
           <blockquote class="about__quote">
             <p>"I'm where I am suppose to be. My journey my story."</p>
@@ -354,7 +377,7 @@
        LONG BIO + FACT SHEET
   ═══════════════════════════════════════ -->
   <section class="about section" style="background:var(--bg2); border-top:1px solid var(--border)"
-           aria-labelledby="longbio-heading">
+           aria-label="Long biography and fact sheet">
     <div class="container">
       <div class="about__grid">
 
@@ -410,9 +433,9 @@
           <p class="eyebrow eyebrow--mono">
             Long Bio <span class="epk-wordcount">· 260 words</span>
           </p>
-          <h2 class="about__heading" id="longbio-heading" style="font-size:clamp(38px,4.5vw,56px)">
+          <h3 class="about__heading" style="font-size:clamp(38px,4.5vw,56px)">
             Philly's Own,<br>Since 1999
-          </h2>
+          </h3>
 
           <p class="about__copy">
             <strong>Anissa Bane</strong> has been making Philadelphia laugh since 1999. Working as
@@ -522,7 +545,16 @@
   <!-- ═══════════════════════════════════════
        CREDITS
   ═══════════════════════════════════════ -->
-  <section id="credits" aria-labelledby="credits-heading">
+  <div class="shows__header" id="credits">
+    <div class="container">
+      <div class="shows__header-inner">
+        <h2 class="shows__title" id="credits-heading">Credits &amp; Career</h2>
+        <a href="#booking" class="btn btn--gold">Book Her</a>
+      </div>
+    </div>
+  </div>
+
+  <section aria-labelledby="credits-heading">
 
     <!-- Network / press bar -->
     <div class="network-bar" aria-label="Bills and press">
@@ -563,7 +595,7 @@
       <div class="container">
         <div class="merch__header">
           <p class="eyebrow eyebrow--mono">Television · Screen · Stage</p>
-          <h2 id="credits-heading" class="merch__title">Selected <span class="accent--gold">Credits</span></h2>
+          <h3 class="merch__title">Selected <span class="accent--gold">Credits</span></h3>
         </div>
 
         <div class="merch__grid">
@@ -657,14 +689,23 @@
   <!-- ═══════════════════════════════════════
        PERFORMANCE REEL
   ═══════════════════════════════════════ -->
-  <section class="watch section" id="reel" aria-labelledby="reel-heading">
+  <div class="shows__header" id="reel">
+    <div class="container">
+      <div class="shows__header-inner">
+        <h2 class="shows__title" id="reel-heading">Performance Reel</h2>
+        <a href="https://www.youtube.com/@Datgirlcomedy" class="btn btn--gold" target="_blank" rel="noopener">Watch on YouTube</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="watch section" aria-labelledby="reel-heading">
     <div class="container">
       <div class="watch__grid">
         <div class="watch__text">
           <p class="eyebrow eyebrow--mono">Performance Reel</p>
-          <h2 id="reel-heading" class="watch__heading">
+          <h3 class="watch__heading">
             Watch Her<br><span class="accent--gold">Work</span>
-          </h2>
+          </h3>
           <p class="watch__copy">
             15+ reels on Facebook — performance clips, show highlights and crowd work. The Aug 16
             live recording drops to YouTube after the show. For a specific clip, a full-length set,
@@ -714,9 +755,17 @@
   <!-- ═══════════════════════════════════════
        PRESS QUOTES
   ═══════════════════════════════════════ -->
-  <section class="press section" id="press" aria-labelledby="press-heading">
+  <div class="shows__header" id="press">
     <div class="container">
-      <p class="eyebrow eyebrow--mono" id="press-heading" style="text-align:center">What They're Saying</p>
+      <div class="shows__header-inner">
+        <h2 class="shows__title" id="press-heading">Press</h2>
+      </div>
+    </div>
+  </div>
+
+  <section class="press section" aria-labelledby="press-heading">
+    <div class="container">
+      <p class="eyebrow eyebrow--mono" style="text-align:center">What They're Saying</p>
 
       <div class="quotes" id="quotes" aria-live="polite">
         <blockquote class="quote quote--active" data-idx="0">
@@ -747,11 +796,19 @@
   <!-- ═══════════════════════════════════════
        DOWNLOADS / PRESS ASSETS
   ═══════════════════════════════════════ -->
-  <section class="merch section" id="downloads" aria-labelledby="downloads-heading">
+  <div class="shows__header" id="downloads">
+    <div class="container">
+      <div class="shows__header-inner">
+        <h2 class="shows__title" id="downloads-heading">Press Assets</h2>
+      </div>
+    </div>
+  </div>
+
+  <section class="merch section" aria-labelledby="downloads-heading">
     <div class="container">
       <div class="merch__header">
-        <p class="eyebrow eyebrow--mono">Press Assets · Free to use with credit</p>
-        <h2 id="downloads-heading" class="merch__title">Download <span class="accent--gold">Kit</span></h2>
+        <p class="eyebrow eyebrow--mono">Free to use with credit</p>
+        <h3 class="merch__title">Download <span class="accent--gold">Kit</span></h3>
       </div>
 
       <div class="merch__grid">
@@ -812,7 +869,7 @@
   <section class="booking" id="booking" aria-labelledby="booking-heading">
     <div class="container">
       <div class="booking__inner">
-        <p class="eyebrow eyebrow--mono" style="color:rgba(245,197,24,0.8)">Booking &amp; Press Contact</p>
+        <p class="eyebrow eyebrow--mono">Booking &amp; Press Contact</p>
         <h2 id="booking-heading" class="booking__title">
           Book<br><span class="accent--gold">Ms. Darkchild</span>
         </h2>
@@ -873,9 +930,9 @@
             <a href="tel:2677023275">267-702-DARK</a>
           </p>
           <div class="footer__socials">
-            <a href="https://www.instagram.com/datgirlcomedy/" target="_blank" rel="noopener">INSTAGRAM</a>
-            <a href="https://www.facebook.com/Msdarkchild"     target="_blank" rel="noopener">FACEBOOK</a>
-            <a href="https://www.youtube.com/@Datgirlcomedy"   target="_blank" rel="noopener">YOUTUBE</a>
+            <a href="https://www.instagram.com/datgirlcomedy/" target="_blank" rel="noopener"><svg class="social-ico" aria-hidden="true"><use href="#ico-ig"/></svg>INSTAGRAM</a>
+            <a href="https://www.facebook.com/Msdarkchild"     target="_blank" rel="noopener"><svg class="social-ico" aria-hidden="true"><use href="#ico-fb"/></svg>FACEBOOK</a>
+            <a href="https://www.youtube.com/@Datgirlcomedy"   target="_blank" rel="noopener"><svg class="social-ico" aria-hidden="true"><use href="#ico-yt"/></svg>YOUTUBE</a>
           </div>
           <div class="footer__pills">
             <a href="../index.html"       class="pill pill--purple">MAIN SITE</a>
