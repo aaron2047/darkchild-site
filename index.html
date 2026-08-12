@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Ms. Darkchild | The Princess of Comedy | Philadelphia Comedian</title>
+  <meta name="description" content="Anissa Bane — Ms. Darkchild, Philadelphia's Princess of Comedy. Stand-up, hosting, corporate events & private shows. Performing since 1999. Book her today.">
+  <link rel="canonical" href="https://aaron2047.github.io/darkchild-site/">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://aaron2047.github.io/darkchild-site/">
+  <meta property="og:title"       content="Ms. Darkchild | The Princess of Comedy">
+  <meta property="og:description" content="Philadelphia's own Ms. Darkchild — comedian, host, actress, and producer. Performing since 1999. Book her for your next event.">
+  <meta property="og:image"       content="assets/images/headshot.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@Datgirlcomedy">
+  <meta name="twitter:title"       content="Ms. Darkchild | The Princess of Comedy">
+  <meta name="twitter:description" content="Philadelphia's own Ms. Darkchild — comedian, host, actress &amp; producer. Book her today.">
+  <meta name="twitter:image"       content="assets/images/headshot.webp">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Structured Data — Person schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ms. Darkchild",
+    "alternateName": "Anissa Bane",
+    "jobTitle": "Stand-Up Comedian, Host, Actress",
+    "description": "Philadelphia comedian, host, actress and producer since 1999. The Princess of Comedy.",
+    "url": "https://aaron2047.github.io/darkchild-site/",
+    "image": "assets/images/headshot.webp",
+    "telephone": "+12677023275",
+    "email": "MsDarkChild@msdarkchildcomedy.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Philadelphia",
+      "addressRegion": "PA",
+      "addressCountry": "US"
+    },
+    "sameAs": [
+      "https://www.instagram.com/datgirlcomedy/",
+      "https://www.facebook.com/Msdarkchild",
+      "https://www.youtube.com/@Datgirlcomedy"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════
+       LIVE EVENT BANNER — Aug 16
+  ═══════════════════════════════════════ -->
+  <div class="live-banner" id="live-banner">
+    <div class="live-banner__inner">
+      <div class="live-banner__left">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span class="live-label">LIVE RECORDING</span>
+        <div class="live-divider" aria-hidden="true"></div>
+        <span class="live-title">Days of Our Lives — Comedy Edition</span>
+        <span class="live-meta">SUN AUG 16 · CANNSTATTER BALLROOM · PHILA PA</span>
+        <div class="live-networks" aria-label="Featuring comedians from">
+          <span>SHOWTIME</span><span>HBO</span><span>FOX</span><span>BET</span>
+        </div>
+      </div>
+      <div class="live-banner__right">
+        <a href="#shows" class="btn btn--gold btn--sm">GET TICKETS</a>
+        <button class="live-close" onclick="document.getElementById('live-banner').remove()" aria-label="Dismiss">×</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       NAV
+  ═══════════════════════════════════════ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <a href="#hero" class="nav__logo">Ms. <span>Darkchild</span></a>
+
+    <ul class="nav__links" role="list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#shows">Shows</a></li>
+      <li><a href="#watch">Watch</a></li>
+      <li><a href="#press">Press</a></li>
+      <li><a href="#merch">Merch</a></li>
+    </ul>
+
+    <a href="#booking" class="btn btn--gold btn--sm nav__cta">Book Her</a>
+
+    <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile nav drawer -->
+  <div class="nav__drawer" id="nav-drawer" aria-hidden="true">
+    <ul role="list">
+      <li><a href="#about"   onclick="closeNav()">About</a></li>
+      <li><a href="#shows"   onclick="closeNav()">Shows</a></li>
+      <li><a href="#watch"   onclick="closeNav()">Watch</a></li>
+      <li><a href="#press"   onclick="closeNav()">Press</a></li>
+      <li><a href="#merch"   onclick="closeNav()">Merch</a></li>
+      <li><a href="#booking" onclick="closeNav()" class="btn btn--gold btn--block">Book Her</a></li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+  <section class="hero" id="hero" aria-label="Ms. Darkchild hero">
+
+    <!-- Photo right panel — swap src when hi-res available -->
+    <div class="hero__photo">
+      <img
+        src="assets/images/hero.webp"
+        alt="Ms. Darkchild — mic raised to a wall of stage lights. Philadelphia comedian, host and actress since 1999."
+        width="900" height="900"
+        fetchpriority="high"
+      >
+    </div>
+
+    <!-- Left gradient overlay -->
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <!-- Stage light beams -->
+    <div class="hero__beams" aria-hidden="true">
+      <div class="beam beam--1"></div>
+      <div class="beam beam--2"></div>
+      <div class="beam beam--3"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="hero__content">
+
+      <p class="eyebrow eyebrow--mono hero__crown">
+        <span class="eyebrow__line" aria-hidden="true"></span>
+        PHILLY'S OWN · EST. 1999 · THE PRINCESS OF COMEDY
+      </p>
+
+      <h1 class="hero__name">
+        <span class="hero__ms">Ms.</span>
+        <br>
+        <span class="hero__dark">Dark</span><span class="hero__child">child</span>
+      </h1>
+
+      <p class="hero__roles">
+        COMEDIENNE_&nbsp; ACTRESS_&nbsp; HOST_&nbsp; PRODUCER
+      </p>
+
+      <blockquote class="hero__quote">
+        "The princess of comedy. I'm where I am suppose to be.
+        My journey my story."
+        <cite>— @datgirlcomedy</cite>
+      </blockquote>
+
+      <div class="hero__actions">
+        <a href="#booking" class="btn btn--gold">Book Ms. Darkchild</a>
+        <a href="#shows"   class="btn btn--outline">▶ &nbsp;Aug 16 Show</a>
+        <a href="#watch"   class="btn btn--outline">Watch Reels</a>
+      </div>
+
+      <!-- Network logos -->
+      <div class="hero__networks">
+        <p class="networks__label">Comedians from</p>
+        <div class="networks__logos" aria-label="SHOWTIME, HBO, COMEDY CENTRAL, FOX, BET">
+          <span>SHOWTIME</span>
+          <span>HBO</span>
+          <span>COMEDY CENTRAL</span>
+          <span>FOX</span>
+          <span>BET</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vertical socials -->
+    <div class="hero__socials">
+      <a href="https://www.instagram.com/datgirlcomedy/" target="_blank" rel="noopener" aria-label="Instagram @datgirlcomedy">
+        <span class="social-label">IG</span><span class="social-handle">@datgirlcomedy</span>
+      </a>
+      <a href="https://www.facebook.com/Msdarkchild" target="_blank" rel="noopener" aria-label="Facebook Msdarkchild">
+        <span class="social-label">FB</span><span class="social-handle">Msdarkchild</span>
+      </a>
+      <a href="https://www.youtube.com/@Datgirlcomedy" target="_blank" rel="noopener" aria-label="YouTube @Datgirlcomedy">
+        <span class="social-label">YT</span><span class="social-handle">@Datgirlcomedy</span>
+      </a>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       IMPACT STATS
+  ═══════════════════════════════════════ -->
+  <section class="impact" aria-label="Career statistics">
+    <div class="container">
+      <div class="impact__grid">
+        <div class="impact__stat">
+          <span class="impact__num">25+</span>
+          <span class="impact__label">Years Performing</span>
+        </div>
+        <div class="impact__stat">
+          <span class="impact__num">1999</span>
+          <span class="impact__label">Started in Comedy</span>
+        </div>
+        <div class="impact__stat">
+          <span class="impact__num">4.5K</span>
+          <span class="impact__label">Instagram Followers</span>
+        </div>
+        <div class="impact__stat">
+          <span class="impact__num">5</span>
+          <span class="impact__label">Networks Featured</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Network / Press logos bar -->
+  <section class="network-bar" aria-label="Featured on">
+    <div class="container">
+      <p class="network-bar__label">Comedians From</p>
+      <div class="network-bar__logos">
+        <span class="net-showtime">SHOWTIME</span>
+        <span class="net-hbo">HBO</span>
+        <span class="net-cc">COMEDY CENTRAL</span>
+        <span class="net-fox">FOX</span>
+        <span class="net-bet">BET</span>
+      </div>
+      <div class="press-strip">
+        <span>FOX 29 Philadelphia</span>
+        <span>The Colonial Theatre</span>
+        <span>Cannstatter Ballroom</span>
+        <span>Women of Comedy</span>
+        <span>Soul Jam</span>
+        <span>Juke Sistas</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Co-bills strip -->
+  <section class="cobills" aria-label="Performed alongside">
+    <div class="container">
+      <p class="eyebrow eyebrow--mono cobills__label">Performed Alongside</p>
+      <div class="cobills__names">
+        <span>Michael Blackson</span><span>Cocoa Brown</span><span>Rodney Perry</span>
+        <span>Damon Williams</span><span>Rob Stapleton</span><span>Tommy 2 Smooth</span>
+        <span>Capone</span><span>B-Phat</span><span>JoaFunnyMan</span><span>Nate The Landlord</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       ABOUT
+  ═══════════════════════════════════════ -->
+  <section class="about section" id="about" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="about__grid">
+
+        <!-- Photo card -->
+        <div class="about__photo-wrap">
+          <div class="about__photo-card">
+            <img
+              src="assets/images/headshot.webp"
+              alt="Ms. Darkchild headshot — Anissa Bane, Philadelphia comedian"
+              width="400" height="496"
+              loading="lazy"
+            >
+            <div class="about__photo-bar" aria-hidden="true"></div>
+          </div>
+          <div class="about__badge about__badge--top">Absolute Soul Entertainment LLC</div>
+          <div class="about__badge about__badge--bottom">#walkinginmyseason</div>
+        </div>
+
+        <!-- Text -->
+        <div class="about__text">
+          <p class="eyebrow eyebrow--mono">About Ms. Darkchild</p>
+          <h2 class="about__heading" id="about-heading">
+            The Princess<br>of Comedy
+          </h2>
+
+          <blockquote class="about__quote">
+            <p>"I'm where I am suppose to be. My journey my story."</p>
+            <cite>— Anissa Bane, @datgirlcomedy</cite>
+          </blockquote>
+
+          <p class="about__copy">
+            <strong>Anissa Bane — A.K.A. Ms. Darkchild</strong> has commanded stages
+            across Philadelphia since 1999. Comedian, host, actress, producer, artist manager,
+            and founder of <strong>Absolute Soul Entertainment LLC</strong>.
+          </p>
+          <p class="about__copy">
+            Featured on <strong class="accent--pink">FOX 29 Philadelphia</strong>.
+            Actress in "The Whispering Bench" (role: Renee Brown).
+            Developing original stage play <em>"Tenant Eviction."</em>
+          </p>
+
+          <!-- Timeline -->
+          <ul class="timeline" aria-label="Career milestones">
+            <li class="timeline__item">
+              <span class="timeline__year">1999</span>
+              <div class="timeline__bar" aria-hidden="true"></div>
+              <div class="timeline__text">
+                <strong>Started comedy</strong>
+                <span>Saffron House of Comedy — weekly host segment</span>
+              </div>
+            </li>
+            <li class="timeline__item">
+              <span class="timeline__year">2001</span>
+              <div class="timeline__bar" aria-hidden="true"></div>
+              <div class="timeline__text">
+                <strong>Added hosting</strong>
+                <span>Expanded to full multilateral entertainer</span>
+              </div>
+            </li>
+            <li class="timeline__item">
+              <span class="timeline__year">2012+</span>
+              <div class="timeline__bar" aria-hidden="true"></div>
+              <div class="timeline__text">
+                <strong>Major co-bills</strong>
+                <span>Michael Blackson, Cocoa Brown, Rodney Perry &amp; more</span>
+              </div>
+            </li>
+            <li class="timeline__item">
+              <span class="timeline__year">2026</span>
+              <div class="timeline__bar" aria-hidden="true"></div>
+              <div class="timeline__text">
+                <strong>FOX 29 + Live Recording</strong>
+                <span>Television appearance + "Days of Our Lives" event</span>
+              </div>
+            </li>
+          </ul>
+
+          <a href="#booking" class="btn btn--gold">Book Ms. Darkchild</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SHOWS — Aug 16 featured + full list
+  ═══════════════════════════════════════ -->
+  <section class="shows" id="shows" aria-labelledby="shows-heading">
+
+    <!-- Purple section header -->
+    <div class="shows__header">
+      <div class="container">
+        <div class="shows__header-inner">
+          <h2 class="shows__title" id="shows-heading">Upcoming Shows</h2>
+          <a href="#booking" class="btn btn--gold">Request a Date</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Aug 16 FEATURED SHOW -->
+    <div class="show-feature" aria-label="Featured show — August 16 live recording">
+      <div class="container">
+        <div class="show-feature__inner">
+
+          <div class="show-feature__badge">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span>LIVE RECORDING EVENT</span>
+          </div>
+
+          <div class="show-feature__grid">
+            <div class="show-feature__date" aria-label="August 16">
+              <span class="show-month">AUG</span>
+              <span class="show-day">16</span>
+              <span class="show-dow">SUNDAY</span>
+            </div>
+
+            <div class="show-feature__info">
+              <h3 class="show-feature__name">
+                Days of Our Lives<br>Comedy Edition
+              </h3>
+              <p class="show-feature__venue">
+                Cannstatter Ballroom · 9130 Academy Rd, Philadelphia PA 19114
+              </p>
+              <ul class="show-feature__times" aria-label="Show times">
+                <li>✦ Clean Comedy 3PM–4PM</li>
+                <li>✦ Unclean 6PM–8PM</li>
+                <li>✦ Karaoke Comedy included</li>
+              </ul>
+              <p class="show-feature__lineup">
+                <span class="show-feature__lineup-label">Featuring:</span>
+                Nate The Landlord · Shawn Harvey · Josh Kosh · Timmy Hall
+              </p>
+              <div class="show-feature__networks" aria-label="Networks represented">
+                <span>SHOWTIME</span><span>HBO</span><span>FOX</span><span>BET</span>
+              </div>
+            </div>
+
+            <div class="show-feature__cta">
+              <a href="#booking" class="btn btn--gold">Get Tickets</a>
+              <a href="#booking" class="btn btn--outline btn--sm">RSVP</a>
+              <p class="show-feature__host">HOSTED BY<br><strong>MS.DARKCHILD</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter bar + show list -->
+    <div class="shows__list-wrap">
+      <div class="container">
+        <div class="shows__filters" role="tablist" aria-label="Filter shows">
+          <button class="filter-btn filter-btn--active" data-filter="all"    role="tab" aria-selected="true">ALL SHOWS</button>
+          <button class="filter-btn"                   data-filter="philly"  role="tab" aria-selected="false">PHILLY</button>
+          <button class="filter-btn"                   data-filter="regional"role="tab" aria-selected="false">REGIONAL</button>
+          <span class="shows__count" id="show-count" aria-live="polite">3 SHOWS</span>
+        </div>
+
+        <div class="shows__list" id="shows-list" role="tabpanel">
+
+          <article class="show-row" data-types="philly" aria-label="July 25 show">
+            <div class="show-row__date"><span>JUL</span><span class="show-row__day">25</span></div>
+            <div class="show-row__info">
+              <h3>Comedy &amp; Dinner at La'Kele</h3>
+              <p>La'Kele · 1608 Ridge Ave</p>
+              <p class="show-row__city">Philadelphia, PA · Doors 3PM · Show 4PM</p>
+            </div>
+            <div class="show-row__actions">
+              <a href="#booking" class="btn btn--outline btn--xs">TICKETS</a>
+              <a href="#booking" class="btn btn--outline-gold btn--xs">RSVP</a>
+            </div>
+          </article>
+
+          <article class="show-row" data-types="regional" aria-label="July 12 show">
+            <div class="show-row__date"><span>JUL</span><span class="show-row__day">12</span></div>
+            <div class="show-row__info">
+              <h3>Black &amp; White Soul Jam</h3>
+              <p>Claridge Hotel</p>
+              <p class="show-row__city">Atlantic City, NJ · 5–6:30PM</p>
+            </div>
+            <div class="show-row__actions">
+              <a href="#booking" class="btn btn--outline btn--xs">TICKETS</a>
+              <a href="#booking" class="btn btn--outline-gold btn--xs">RSVP</a>
+            </div>
+          </article>
+
+          <article class="show-row" data-types="philly" aria-label="June 26 show">
+            <div class="show-row__date"><span>JUN</span><span class="show-row__day">26</span></div>
+            <div class="show-row__info">
+              <h3>Jazz &amp; Jokes Comedy Show</h3>
+              <p>Mid-Summer's Dream</p>
+              <p class="show-row__city">Philadelphia, PA · 8PM</p>
+            </div>
+            <div class="show-row__actions">
+              <a href="#booking" class="btn btn--outline btn--xs">TICKETS</a>
+              <a href="#booking" class="btn btn--outline-gold btn--xs">RSVP</a>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="shows__footer">
+          <a href="#booking" class="btn btn--outline">Request a Date in Your City →</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       WATCH / VIDEO
+  ═══════════════════════════════════════ -->
+  <section class="watch section" id="watch" aria-labelledby="watch-heading">
+    <div class="container">
+      <div class="watch__grid">
+        <div class="watch__text">
+          <p class="eyebrow eyebrow--mono">Now Playing</p>
+          <h2 id="watch-heading" class="watch__heading">
+            See Why They<br><span class="accent--gold">Can't</span><br>Stop Laughing
+          </h2>
+          <p class="watch__copy">
+            15+ reels on Facebook. Performance clips, show highlights, and the Aug 16
+            live recording dropping to YouTube after the show.
+          </p>
+
+          <div class="watch__socials">
+            <p class="eyebrow eyebrow--mono">Follow Ms. Darkchild</p>
+            <div class="watch__social-pills">
+              <a href="https://www.instagram.com/datgirlcomedy/" target="_blank" rel="noopener">INSTAGRAM</a>
+              <a href="https://www.facebook.com/Msdarkchild"     target="_blank" rel="noopener">FACEBOOK</a>
+              <a href="https://www.youtube.com/@Datgirlcomedy"   target="_blank" rel="noopener">YOUTUBE</a>
+              <a href="https://www.facebook.com/Msdarkchild/owner_reels" target="_blank" rel="noopener">REELS</a>
+            </div>
+          </div>
+
+          <a href="https://www.youtube.com/@Datgirlcomedy" class="btn btn--gold" target="_blank" rel="noopener">
+            Watch on YouTube
+          </a>
+        </div>
+
+        <!-- YouTube embed slot -->
+        <div class="watch__embed">
+          <!-- REPLACE: swap YOUR_VIDEO_ID with any video from @Datgirlcomedy
+               Example: https://www.youtube.com/embed/XXXXXXXXXXX?rel=0&modestbranding=1
+          -->
+          <div class="watch__embed-placeholder" id="video-placeholder">
+            <button class="play-btn" onclick="loadVideo()" aria-label="Load video reel">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <polygon points="7,3 22,12 7,21" fill="#100E0C"/>
+              </svg>
+            </button>
+            <p>Performance Reel — Click to Watch</p>
+            <span>Aug 16 recording dropping soon</span>
+          </div>
+          <div id="video-frame" style="display:none; width:100%; height:100%;">
+            <!-- iframe injected by JS below -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live recording alert -->
+    <div class="watch__alert">
+      <div class="container">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span class="accent--recording">LIVE RECORDING</span>
+        <span>August 16, 2026 — Cannstatter Ballroom, Philadelphia. Video dropping to YouTube after the show.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PRESS / QUOTES
+  ═══════════════════════════════════════ -->
+  <section class="press section" id="press" aria-labelledby="press-heading">
+    <div class="container">
+      <p class="eyebrow eyebrow--mono" id="press-heading" style="text-align:center">What They're Saying</p>
+
+      <div class="quotes" id="quotes" aria-live="polite">
+        <blockquote class="quote quote--active" data-idx="0">
+          <div class="quote__mark" aria-hidden="true">"</div>
+          <p>She had the whole room going. Never knew what was coming next — that's the mark of a real comedian.</p>
+          <footer><cite>— The Colonial Theatre, Phoenixville PA</cite></footer>
+        </blockquote>
+        <blockquote class="quote" data-idx="1">
+          <div class="quote__mark" aria-hidden="true">"</div>
+          <p>Ms. Darkchild brings a passion and a vision to comedy and hosting — she wants to revolutionize the way people view comedy.</p>
+          <footer><cite>— Press Bio</cite></footer>
+        </blockquote>
+        <blockquote class="quote" data-idx="2">
+          <div class="quote__mark" aria-hidden="true">"</div>
+          <p>Beware is right. You truly never know what you're going to get — and that's exactly why you keep coming back.</p>
+          <footer><cite>— Fan Review, GigSalad</cite></footer>
+        </blockquote>
+      </div>
+
+      <div class="quote__dots" role="tablist" aria-label="Quote navigation">
+        <button class="dot dot--active" data-q="0" aria-label="Quote 1" role="tab"></button>
+        <button class="dot"             data-q="1" aria-label="Quote 2" role="tab"></button>
+        <button class="dot"             data-q="2" aria-label="Quote 3" role="tab"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       MERCH
+  ═══════════════════════════════════════ -->
+  <section class="merch section" id="merch" aria-labelledby="merch-heading">
+    <div class="container">
+      <div class="merch__header">
+        <p class="eyebrow eyebrow--mono">Walking in My Season Collection · @datgirlcomedy</p>
+        <h2 id="merch-heading" class="merch__title">Shop the <span class="accent--gold">Merch</span></h2>
+      </div>
+
+      <div class="merch__grid">
+
+        <article class="merch-card">
+          <div class="merch-card__badge merch-card__badge--gold">Best Seller</div>
+          <div class="merch-card__img" aria-label="Ms. Darkchild Logo Hoodie — Hot Pink">🩷</div>
+          <p class="merch-card__color">Hot Pink · Zip-Up Hoodie</p>
+          <h3 class="merch-card__name">Ms. Darkchild Logo Hoodie</h3>
+          <p class="merch-card__sub">Walking in My Season</p>
+          <div class="merch-card__footer">
+            <span class="merch-card__price">$45</span>
+            <button class="btn btn--gold btn--xs" onclick="addToCart('Ms. Darkchild Logo Hoodie')">ADD TO CART</button>
+          </div>
+        </article>
+
+        <article class="merch-card">
+          <div class="merch-card__img" aria-label="Walking in My Season Long-Sleeve — Black">🖤</div>
+          <p class="merch-card__color">Black · Long-Sleeve Tee</p>
+          <h3 class="merch-card__name">Walking in My Season Long-Sleeve</h3>
+          <p class="merch-card__sub">Rhinestone glitter graphic</p>
+          <div class="merch-card__footer">
+            <span class="merch-card__price">$35</span>
+            <button class="btn btn--gold btn--xs" onclick="addToCart('Walking in My Season Long-Sleeve')">ADD TO CART</button>
+          </div>
+        </article>
+
+        <article class="merch-card">
+          <div class="merch-card__badge merch-card__badge--pink">Limited</div>
+          <div class="merch-card__img" aria-label="Carey & Cocky Tee — Pink">🎤</div>
+          <p class="merch-card__color">Pink · Classic Tee</p>
+          <h3 class="merch-card__name">Carey &amp; Cocky Tee</h3>
+          <p class="merch-card__sub">C&amp;C Collection — Limited run</p>
+          <div class="merch-card__footer">
+            <span class="merch-card__price">$28</span>
+            <button class="btn btn--gold btn--xs" onclick="addToCart('Carey & Cocky Tee')">ADD TO CART</button>
+          </div>
+        </article>
+
+      </div>
+
+      <div id="cart-toast" class="cart-toast" role="status" aria-live="polite"></div>
+
+      <p class="merch__footer-note">Custom orders, event merch &amp; wholesale inquiries welcome.</p>
+      <a href="#booking" class="btn btn--outline">Contact for Custom Orders</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       BOOKING
+  ═══════════════════════════════════════ -->
+  <section class="booking" id="booking" aria-labelledby="booking-heading">
+    <div class="container">
+      <div class="booking__inner">
+        <p class="eyebrow eyebrow--mono" style="color:rgba(245,197,24,0.8)">Book Ms. Darkchild</p>
+        <h2 id="booking-heading" class="booking__title">
+          Ready<br>to <span class="accent--gold">Laugh?</span>
+        </h2>
+        <p class="booking__sub">
+          Stand-up · hosting · private events · corporate shows · expos · #cornyandcocky
+        </p>
+
+        <!-- Replace ACTION with your Formspree endpoint -->
+        <form
+          class="booking__form"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+          id="booking-form"
+          aria-label="Booking inquiry form"
+        >
+          <div class="form__row">
+            <div class="form__group">
+              <label for="f-name" class="sr-only">Your name</label>
+              <input id="f-name"  name="name"  type="text"  placeholder="Your name"      required autocomplete="name">
+            </div>
+            <div class="form__group">
+              <label for="f-email" class="sr-only">Email address</label>
+              <input id="f-email" name="email" type="email" placeholder="Email address"  required autocomplete="email">
+            </div>
+          </div>
+          <div class="form__group">
+            <label for="f-type" class="sr-only">Event type</label>
+            <select id="f-type" name="event_type">
+              <option value="" disabled selected>Event type...</option>
+              <option>Stand-up performance</option>
+              <option>Hosting / MC</option>
+              <option>Corporate event</option>
+              <option>Private party</option>
+              <option>Expo / community event</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form__group">
+            <label for="f-city" class="sr-only">City or venue</label>
+            <input id="f-city" name="city" type="text" placeholder="City / Venue">
+          </div>
+          <div class="form__group">
+            <label for="f-msg" class="sr-only">Message</label>
+            <textarea id="f-msg" name="message" rows="3" placeholder="Tell her more about your event..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--gold btn--block">Send Booking Inquiry</button>
+        </form>
+
+        <p class="booking__contact">
+          <a href="mailto:MsDarkChild@msdarkchildcomedy.com">MsDarkChild@msdarkchildcomedy.com</a>
+          &nbsp;·&nbsp;
+          <a href="tel:2677023275">267-702-DARK (3275)</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <p class="footer__logo">Ms. <span>Darkchild</span></p>
+          <p class="footer__tagline">THE PRINCESS OF COMEDY · PHILADELPHIA, PA · EST. 1999</p>
+          <p class="footer__hashtags">#walkinginmyseason · #cornyandcocky</p>
+          <p class="footer__contact">
+            <a href="mailto:MsDarkChild@msdarkchildcomedy.com">MsDarkChild@msdarkchildcomedy.com</a><br>
+            <a href="tel:2677023275">267-702-DARK</a>
+          </p>
+          <div class="footer__socials">
+            <a href="https://www.instagram.com/datgirlcomedy/" target="_blank" rel="noopener">INSTAGRAM</a>
+            <a href="https://www.facebook.com/Msdarkchild"     target="_blank" rel="noopener">FACEBOOK</a>
+            <a href="https://www.youtube.com/@Datgirlcomedy"   target="_blank" rel="noopener">YOUTUBE</a>
+          </div>
+          <div class="footer__pills">
+            <a href="pages/epk.html" class="pill pill--purple">DOWNLOAD EPK</a>
+            <a href="#merch"         class="pill pill--gold">SHOP MERCH</a>
+          </div>
+        </div>
+
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <a href="#about">About</a>
+          <a href="#shows">Shows</a>
+          <a href="#watch">Watch</a>
+          <a href="#press">Press</a>
+          <a href="#merch">Merch</a>
+          <a href="#booking">Book Her</a>
+          <a href="pages/epk.html">EPK</a>
+        </nav>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2026 Absolute Soul Entertainment LLC · All Rights Reserved</p>
+        <p>PHILA, PA · @DATGIRLCOMEDY</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js" defer></script>
+
+</body>
+</html>

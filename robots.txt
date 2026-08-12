@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aaron2047.github.io/darkchild-site/sitemap.xml
