@@ -690,6 +690,13 @@ input, select, textarea { font-family: inherit; }
 }
 .footer__bottom p { font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; }
 
+/* ── SOCIAL ICONS ─────────────────────────────────────────── */
+/* Inline SVG sprite defined at the top of each page body.
+   Icons use currentColor, so they inherit the link's hover colour. */
+.social-ico { width: 13px; height: 13px; flex-shrink: 0; }
+.hero__socials a   { align-items: center; }
+.footer__socials a { display: inline-flex; align-items: center; gap: 6px; }
+
 /* ── RESPONSIVE ───────────────────────────────────────────── */
 @media (max-width: 900px) {
   .nav__links { display: none; }
