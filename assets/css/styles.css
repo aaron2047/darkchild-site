@@ -186,19 +186,22 @@ input, select, textarea { font-family: inherit; }
   position: relative; min-height: 100vh;
   display: flex; flex-direction: column; justify-content: flex-end;
   overflow: hidden; background: var(--bg);
+  background-image: url('https://images.unsplash.com/photo-1599739291127-15c456e459ee?w=1920&q=80&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center top;
 }
 .hero__photo { display: none; }
 .hero__overlay {
   position: absolute; inset: 0;
   background:
     linear-gradient(to right,
-      rgba(10,8,6,0.96) 0%,
-      rgba(10,8,6,0.85) 25%,
-      rgba(10,8,6,0.40) 45%,
-      rgba(10,8,6,0.08) 62%,
-      transparent 75%
+      rgba(10,8,6,0.97) 0%,
+      rgba(10,8,6,0.92) 30%,
+      rgba(10,8,6,0.60) 52%,
+      rgba(10,8,6,0.15) 68%,
+      transparent 80%
     ),
-    linear-gradient(to top, var(--bg) 0%, transparent 20%);
+    linear-gradient(to top, var(--bg) 0%, transparent 25%);
   pointer-events: none;
 }
 .hero__beams { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
