@@ -14,21 +14,14 @@
   <meta property="og:url"         content="https://aaron2047.github.io/darkchild-site/">
   <meta property="og:title"       content="Ms. Darkchild | The Princess of Comedy">
   <meta property="og:description" content="Philadelphia's own Ms. Darkchild — comedian, host, actress, and producer. Performing since 1999. Book her for your next event.">
-  <meta property="og:image"       content="https://aaron2047.github.io/darkchild-site/assets/images/social-card.jpg">
-  <meta property="og:image:width"  content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt"    content="Ms. Darkchild — The Princess of Comedy. Philadelphia comedian, performing since 1999.">
+  <meta property="og:image"       content="assets/images/headshot.webp">
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:site"        content="@Datgirlcomedy">
   <meta name="twitter:title"       content="Ms. Darkchild | The Princess of Comedy">
   <meta name="twitter:description" content="Philadelphia's own Ms. Darkchild — comedian, host, actress &amp; producer. Book her today.">
-  <meta name="twitter:image"       content="https://aaron2047.github.io/darkchild-site/assets/images/social-card.jpg">
-  <meta name="twitter:image:alt"   content="Ms. Darkchild — The Princess of Comedy. Philadelphia comedian, performing since 1999.">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <meta name="twitter:image"       content="assets/images/headshot.webp">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,7 +41,7 @@
     "jobTitle": "Stand-Up Comedian, Host, Actress",
     "description": "Philadelphia comedian, host, actress and producer since 1999. The Princess of Comedy.",
     "url": "https://aaron2047.github.io/darkchild-site/",
-    "image": "https://aaron2047.github.io/darkchild-site/assets/images/headshot.webp",
+    "image": "assets/images/headshot.webp",
     "telephone": "+12677023275",
     "email": "MsDarkChild@msdarkchildcomedy.com",
     "address": {
@@ -67,28 +60,6 @@
 </head>
 
 <body>
-
-  <!-- ═══════════════════════════════════════
-       SOCIAL ICON SPRITE
-       Inline SVG, no external library. Referenced with
-       <svg class="social-ico"><use href="#ico-ig"/></svg>
-       Icons inherit link colour via currentColor.
-  ═══════════════════════════════════════ -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-    <symbol id="ico-ig" viewBox="0 0 24 24">
-      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/>
-      <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/>
-      <circle cx="17.6" cy="6.4" r="1.4" fill="currentColor"/>
-    </symbol>
-    <symbol id="ico-fb" viewBox="0 0 24 24">
-      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/>
-      <path d="M15.4 8.4h-1.6c-.6 0-1 .4-1 1v1.8h2.5l-.4 2.6h-2.1v6h-2.6v-6H8.6v-2.6h1.6V9.6c0-2 1.2-3.2 3.1-3.2h2.1v2z" fill="currentColor"/>
-    </symbol>
-    <symbol id="ico-yt" viewBox="0 0 24 24">
-      <rect x="1.5" y="4.5" width="21" height="15" rx="4.5" fill="none" stroke="currentColor" stroke-width="2"/>
-      <path d="M10.2 8.6l5.6 3.4-5.6 3.4z" fill="currentColor"/>
-    </symbol>
-  </svg>
 
   <!-- ═══════════════════════════════════════
        LIVE EVENT BANNER — Aug 16
@@ -116,9 +87,7 @@
        NAV
   ═══════════════════════════════════════ -->
   <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
-    <a href="#hero" class="nav__logo" aria-label="Ms. Darkchild - Home">
-      <img src="assets/images/logo-white.webp" alt="Ms. Darkchild logo" width="697" height="645">
-    </a>
+    <a href="#hero" class="nav__logo"><img src="assets/images/logo-white.webp" alt="Ms. Darkchild" width="697" height="645" style="height:54px;width:auto;display:block;"></a>
 
     <ul class="nav__links" role="list">
       <li><a href="#about">About</a></li>
@@ -151,6 +120,16 @@
        HERO
   ═══════════════════════════════════════ -->
   <section class="hero" id="hero" aria-label="Ms. Darkchild hero">
+
+    <!-- Photo right panel — swap src when hi-res available -->
+    <div class="hero__photo">
+      <img
+        src="assets/images/hero.webp"
+        alt="Ms. Darkchild — mic raised to a wall of stage lights. Philadelphia comedian, host and actress since 1999."
+        width="900" height="900"
+        fetchpriority="high"
+      >
+    </div>
 
     <!-- Left gradient overlay -->
     <div class="hero__overlay" aria-hidden="true"></div>
@@ -208,15 +187,12 @@
     <!-- Vertical socials -->
     <div class="hero__socials">
       <a href="https://www.instagram.com/datgirlcomedy/" target="_blank" rel="noopener" aria-label="Instagram @datgirlcomedy">
-        <svg class="social-ico" aria-hidden="true"><use href="#ico-ig"/></svg>
         <span class="social-label">IG</span><span class="social-handle">@datgirlcomedy</span>
       </a>
       <a href="https://www.facebook.com/Msdarkchild" target="_blank" rel="noopener" aria-label="Facebook Msdarkchild">
-        <svg class="social-ico" aria-hidden="true"><use href="#ico-fb"/></svg>
         <span class="social-label">FB</span><span class="social-handle">Msdarkchild</span>
       </a>
       <a href="https://www.youtube.com/@Datgirlcomedy" target="_blank" rel="noopener" aria-label="YouTube @Datgirlcomedy">
-        <svg class="social-ico" aria-hidden="true"><use href="#ico-yt"/></svg>
         <span class="social-label">YT</span><span class="social-handle">@Datgirlcomedy</span>
       </a>
     </div>
@@ -294,9 +270,9 @@
         <div class="about__photo-wrap">
           <div class="about__photo-card">
             <img
-              src="assets/images/hero.webp"
-              alt="Ms. Darkchild — Anissa Bane, Philadelphia comedian and host"
-              width="532" height="794"
+              src="assets/images/headshot.webp"
+              alt="Ms. Darkchild headshot — Anissa Bane, Philadelphia comedian"
+              width="400" height="496"
               loading="lazy"
             >
             <div class="about__photo-bar" aria-hidden="true"></div>
@@ -425,7 +401,6 @@
             </div>
 
             <div class="show-feature__cta">
-              <!-- UPDATE: Replace with actual Eventbrite/ticketing URL when available -->
               <a href="https://www.eventbrite.com/o/ms-darkchild-absolute-soul-entertainment" target="_blank" rel="noopener" class="btn btn--gold">Get Tickets</a>
               <a href="#booking" class="btn btn--outline btn--sm">RSVP</a>
               <p class="show-feature__host">HOSTED BY<br><strong>MS.DARKCHILD</strong></p>
@@ -718,9 +693,7 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <p class="footer__logo">
-            <img src="assets/images/logo-gold.webp" alt="Ms. Darkchild" width="697" height="645">
-          </p>
+          <img src="assets/images/logo-gold.webp" alt="Ms. Darkchild" width="697" height="645" style="height:54px;width:auto;display:block;margin-bottom:12px;">
           <p class="footer__tagline">THE PRINCESS OF COMEDY · PHILADELPHIA, PA · EST. 1999</p>
           <p class="footer__hashtags">#walkinginmyseason · #cornyandcocky</p>
           <p class="footer__contact">
@@ -728,9 +701,9 @@
             <a href="tel:2677023275">267-702-DARK</a>
           </p>
           <div class="footer__socials">
-            <a href="https://www.instagram.com/datgirlcomedy/" target="_blank" rel="noopener"><svg class="social-ico" aria-hidden="true"><use href="#ico-ig"/></svg>INSTAGRAM</a>
-            <a href="https://www.facebook.com/Msdarkchild"     target="_blank" rel="noopener"><svg class="social-ico" aria-hidden="true"><use href="#ico-fb"/></svg>FACEBOOK</a>
-            <a href="https://www.youtube.com/@Datgirlcomedy"   target="_blank" rel="noopener"><svg class="social-ico" aria-hidden="true"><use href="#ico-yt"/></svg>YOUTUBE</a>
+            <a href="https://www.instagram.com/datgirlcomedy/" target="_blank" rel="noopener">INSTAGRAM</a>
+            <a href="https://www.facebook.com/Msdarkchild"     target="_blank" rel="noopener">FACEBOOK</a>
+            <a href="https://www.youtube.com/@Datgirlcomedy"   target="_blank" rel="noopener">YOUTUBE</a>
           </div>
           <div class="footer__pills">
             <a href="pages/epk.html" class="pill pill--purple">DOWNLOAD EPK</a>
