@@ -188,7 +188,7 @@ input, select, textarea { font-family: inherit; }
   overflow: hidden; background: var(--bg);
   background-image: url('assets/images/hero.webp');
   background-size: cover;
-  background-position: center top;
+  background-position: center center;
 }
 .hero__photo { display: none; }
 .hero__overlay {
