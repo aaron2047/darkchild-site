@@ -186,7 +186,7 @@ input, select, textarea { font-family: inherit; }
   position: relative; min-height: 100vh;
   display: flex; flex-direction: column; justify-content: flex-end;
   overflow: hidden; background: var(--bg);
-  background-image: url('assets/images/hero.webp');
+  background-image: url('assets/images/hero-stage.webp');
   background-size: cover;
   background-position: center center;
 }
@@ -194,13 +194,12 @@ input, select, textarea { font-family: inherit; }
   position: absolute; inset: 0;
   background:
     linear-gradient(to right,
-      rgba(10,8,6,0.97) 0%,
-      rgba(10,8,6,0.92) 30%,
-      rgba(10,8,6,0.60) 52%,
-      rgba(10,8,6,0.15) 68%,
-      transparent 80%
+      rgba(10,8,6,0.94) 0%,
+      rgba(10,8,6,0.80) 30%,
+      rgba(10,8,6,0.30) 55%,
+      transparent 70%
     ),
-    linear-gradient(to top, var(--bg) 0%, transparent 25%);
+    linear-gradient(to top, var(--bg) 0%, transparent 20%);
   pointer-events: none;
 }
 
