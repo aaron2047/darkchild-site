@@ -190,7 +190,6 @@ input, select, textarea { font-family: inherit; }
   background-size: cover;
   background-position: center center;
 }
-.hero__photo { display: none; }
 .hero__overlay {
   position: absolute; inset: 0;
   background:
@@ -203,51 +202,6 @@ input, select, textarea { font-family: inherit; }
     ),
     linear-gradient(to top, var(--bg) 0%, transparent 25%);
   pointer-events: none;
-}
-.hero__beams { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-.beam {
-  position: absolute; bottom: 0;
-  transform-origin: bottom center;
-}
-/* Wide warm spotlight — center stage */
-.beam--1 {
-  left: 55%; width: 420px;
-  height: 92%;
-  transform: translateX(-50%) skewX(-8deg);
-  background: linear-gradient(to top,
-    rgba(245,197,24,0.18) 0%,
-    rgba(245,197,24,0.07) 40%,
-    transparent 100%);
-}
-/* Purple left beam */
-.beam--2 {
-  left: 28%; width: 280px;
-  height: 75%;
-  transform: translateX(-50%) skewX(10deg);
-  background: linear-gradient(to top,
-    rgba(91,45,142,0.22) 0%,
-    rgba(91,45,142,0.08) 45%,
-    transparent 100%);
-}
-/* Gold right accent beam */
-.beam--3 {
-  right: 10%; width: 200px;
-  height: 60%;
-  transform: skewX(-12deg);
-  background: linear-gradient(to top,
-    rgba(245,197,24,0.12) 0%,
-    rgba(245,197,24,0.04) 50%,
-    transparent 100%);
-}
-/* Extra wide subtle haze across the whole right side */
-.hero__beams::after {
-  content: '';
-  position: absolute; bottom: 0; right: 0;
-  width: 65%; height: 100%;
-  background: radial-gradient(ellipse at 70% 100%,
-    rgba(91,45,142,0.14) 0%,
-    rgba(91,45,142,0.06) 40%,
-    transparent 70%);
 }
 
 .hero__content {
