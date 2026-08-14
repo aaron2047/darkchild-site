@@ -187,26 +187,10 @@ input, select, textarea { font-family: inherit; }
   display: flex; flex-direction: column; justify-content: flex-end;
   overflow: hidden; background: var(--bg);
 }
-.hero__photo {
-  position: absolute; inset: 0;
-  overflow: hidden;
-  /* Portrait cutout: anchor bottom-right */
-  display: flex; align-items: flex-end; justify-content: flex-end;
-}
-.hero__photo img {
-  /* Fill the right ~55% of the hero, anchored to the bottom */
-  width: auto;
-  height: 100%;
-  max-width: 58%;
-  object-fit: contain;
-  object-position: bottom right;
-  /* Subtle drop shadow to ground her against the dark bg */
-  filter: drop-shadow(-8px 0 32px rgba(91,45,142,0.35));
-}
+.hero__photo { display: none; }
 .hero__overlay {
   position: absolute; inset: 0;
   background:
-    /* Left text panel — strong fade for name/copy legibility */
     linear-gradient(to right,
       rgba(10,8,6,0.97) 0%,
       rgba(10,8,6,0.90) 28%,
@@ -214,7 +198,6 @@ input, select, textarea { font-family: inherit; }
       rgba(10,8,6,0.10) 66%,
       transparent 80%
     ),
-    /* Bottom fade into site bg */
     linear-gradient(to top, var(--bg) 0%, transparent 18%);
   pointer-events: none;
 }
@@ -722,35 +705,20 @@ input, select, textarea { font-family: inherit; }
     justify-content: flex-start;
   }
 
-  /* Pull photo out of absolute — normal flow block */
-  .hero__photo {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    background: var(--bg);
-    /* Soft fade at bottom into content */
-    -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
-  }
-  .hero__photo img {
-    width: 88%;
-    max-width: 380px;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 6px 28px rgba(91,45,142,0.55));
+  /* No photo in hero — beams only on mobile too */
+  .hero__photo { display: none; }
+
+  /* Restore overlay for beam/light effect on mobile */
+  .hero__overlay {
+    background: linear-gradient(to top, var(--bg) 0%, transparent 40%);
+    display: block;
   }
 
-  /* Overlay not needed — photo is in flow */
-  .hero__overlay { display: none; }
-
-  /* Content below the photo, centered */
+  /* Content centered on mobile */
   .hero__content {
     position: relative;
     z-index: 2;
-    padding: 16px var(--pad-x) 48px;
+    padding: 40px var(--pad-x) 48px;
     max-width: 100%;
     text-align: center;
   }
