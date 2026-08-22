@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ms. Darkchild — Flyer Admin</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-dim: #a88830;
+      --black: #0a0a0a;
+      --surface: #141414;
+      --card: #1e1e1e;
+      --border: rgba(201,168,76,0.25);
+      --text: #f0ece0;
+      --muted: #888;
+      --danger: #e55;
+      --success: #4caf7d;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .admin-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .brand h1 {
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .brand p {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 1.5rem 0;
+    }
+
+    .section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="date"] {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 6px;
+      padding: 10px 12px;
+      color: var(--text);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 1rem;
+    }
+
+    input:focus {
+      border-color: var(--gold);
+    }
+
+    .token-row {
+      display: flex;
+      gap: 8px;
+      align-items: flex-end;
+    }
+
+    .token-row input {
+      flex: 1;
+      margin-bottom: 0;
+    }
+
+    .btn-save {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      white-space: nowrap;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+    }
+
+    .btn-save:hover { background: rgba(201,168,76,0.1); }
+
+    .drop-zone {
+      border: 2px dashed var(--border);
+      border-radius: 10px;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+
+    .drop-zone:hover,
+    .drop-zone.drag-over {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.04);
+    }
+
+    .drop-zone input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      border: none;
+      background: none;
+      padding: 0;
+    }
+
+    .drop-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      opacity: 0.5;
+    }
+
+    .drop-zone p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .drop-zone strong {
+      color: var(--gold);
+    }
+
+    .drop-hint {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 10px;
+      margin-top: 1rem;
+    }
+
+    .preview-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #111;
+    }
+
+    .preview-item img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+    }
+
+    .preview-item .remove {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: rgba(0,0,0,0.75);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .preview-item .file-name {
+      font-size: 10px;
+      color: var(--muted);
+      padding: 6px 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .btn-upload {
+      width: 100%;
+      background: var(--gold);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background 0.2s, opacity 0.2s;
+    }
+
+    .btn-upload:hover { background: #d4b05a; }
+    .btn-upload:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .progress-wrap {
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .progress-bar {
+      background: rgba(255,255,255,0.08);
+      border-radius: 4px;
+      height: 4px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--gold);
+      width: 0%;
+      transition: width 0.3s;
+      border-radius: 4px;
+    }
+
+    .progress-text {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .status-msg {
+      margin-top: 1rem;
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      display: none;
+    }
+
+    .status-msg.success {
+      background: rgba(76,175,125,0.1);
+      border: 1px solid rgba(76,175,125,0.3);
+      color: var(--success);
+    }
+
+    .status-msg.error {
+      background: rgba(238,85,85,0.1);
+      border: 1px solid rgba(238,85,85,0.3);
+      color: var(--danger);
+    }
+
+    .existing-section {
+      margin-top: 1.25rem;
+    }
+
+    .existing-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .existing-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+
+    .existing-thumb {
+      width: 40px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+      flex-shrink: 0;
+      background: #222;
+    }
+
+    .existing-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .existing-info .fname {
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .existing-info .fdate {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .btn-delete {
+      background: transparent;
+      border: 1px solid rgba(238,85,85,0.3);
+      color: #e55;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+
+    .btn-delete:hover { background: rgba(238,85,85,0.1); }
+
+    .config-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .config-note a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .lock-overlay {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .lock-overlay .lock-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+
+    .empty-msg {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      padding: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="admin-wrap">
+
+  <div class="brand">
+    <h1>Ms. Darkchild · Admin</h1>
+    <p>Flyer &amp; Event Manager</p>
+  </div>
+
+  <!-- TOKEN SETUP -->
+  <div class="section" id="token-section">
+    <div class="section-label">GitHub Access</div>
+    <label for="gh-token">Personal Access Token</label>
+    <div class="token-row">
+      <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+      <button class="btn-save" onclick="saveToken()">Save</button>
+    </div>
+    <p class="config-note">
+      Your token is saved in this browser only — never sent anywhere except GitHub.
+      <a href="https://github.com/settings/tokens/new?description=darkchild-flyers&scopes=repo" target="_blank">Create a token →</a>
+      (check the <strong>repo</strong> scope box)
+    </p>
+  </div>
+
+  <!-- UPLOAD SECTION -->
+  <div class="section" id="upload-section">
+    <div class="section-label">Upload Flyers</div>
+
+    <label for="event-date">Event Date (optional)</label>
+    <input type="date" id="event-date">
+
+    <div class="drop-zone" id="drop-zone">
+      <input type="file" id="file-input" accept="image/*" multiple onchange="handleFiles(this.files)">
+      <div class="drop-icon">🎭</div>
+      <p><strong>Drop flyers here</strong> or tap to browse</p>
+      <p class="drop-hint">JPG, PNG, WebP — any size</p>
+    </div>
+
+    <div class="preview-grid" id="preview-grid"></div>
+
+    <button class="btn-upload" id="btn-upload" onclick="uploadAll()" disabled>
+      Upload to Site
+    </button>
+
+    <div class="progress-wrap" id="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="progress-text" id="progress-text">Uploading…</div>
+    </div>
+
+    <div class="status-msg" id="status-msg"></div>
+  </div>
+
+  <!-- EXISTING FLYERS -->
+  <div class="section existing-section" id="existing-section">
+    <div class="section-label">Published Flyers</div>
+    <div id="existing-list">
+      <div class="lock-overlay">
+        <div class="lock-icon">🔒</div>
+        Save your token above to manage flyers
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const REPO  = 'aaron2047/darkchild-site';
+const BRANCH = 'main';
+const FOLDER = 'assets/flyers';
+const API    = 'https://api.github.com';
+
+let pendingFiles = [];
+
+function getToken() {
+  return localStorage.getItem('dc_gh_token') || '';
+}
+
+function saveToken() {
+  const t = document.getElementById('gh-token').value.trim();
+  if (!t) { showStatus('Enter a token first', 'error'); return; }
+  localStorage.setItem('dc_gh_token', t);
+  document.getElementById('gh-token').value = '';
+  showStatus('Token saved in browser', 'success');
+  loadExisting();
+}
+
+window.addEventListener('load', () => {
+  const t = getToken();
+  if (t) {
+    document.getElementById('gh-token').placeholder = 'Token saved — paste a new one to update';
+    loadExisting();
+  }
+  setupDrop();
+});
+
+function setupDrop() {
+  const zone = document.getElementById('drop-zone');
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.classList.remove('drag-over');
+    handleFiles(e.dataTransfer.files);
+  });
+}
+
+function handleFiles(files) {
+  Array.from(files).forEach(f => {
+    if (!f.type.startsWith('image/')) return;
+    pendingFiles.push(f);
+    const reader = new FileReader();
+    reader.onload = ev => addPreview(f, ev.target.result, pendingFiles.length - 1);
+    reader.readAsDataURL(f);
+  });
+  document.getElementById('btn-upload').disabled = pendingFiles.length === 0;
+}
+
+function addPreview(file, src, idx) {
+  const grid = document.getElementById('preview-grid');
+  const item = document.createElement('div');
+  item.className = 'preview-item';
+  item.dataset.idx = idx;
+  item.innerHTML = `
+    <img src="${src}" alt="${file.name}">
+    <div class="file-name">${file.name}</div>
+    <div class="remove" onclick="removePreview(this, ${idx})">×</div>
+  `;
+  grid.appendChild(item);
+}
+
+function removePreview(btn, idx) {
+  pendingFiles[idx] = null;
+  btn.closest('.preview-item').remove();
+  document.getElementById('btn-upload').disabled = pendingFiles.filter(Boolean).length === 0;
+}
+
+function slugify(name, date) {
+  const base = name.replace(/\.[^.]+$/, '').replace(/[^a-z0-9]+/gi, '-').toLowerCase();
+  const ts = date || new Date().toISOString().slice(0, 10);
+  return `${ts}-${base}`;
+}
+
+async function toBase64(file) {
+  return new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onload = () => res(r.result.split(',')[1]);
+    r.onerror = rej;
+    r.readAsDataURL(file);
+  });
+}
+
+async function uploadAll() {
+  const token = getToken();
+  if (!token) { showStatus('Save your GitHub token first', 'error'); return; }
+
+  const files = pendingFiles.filter(Boolean);
+  if (!files.length) return;
+
+  const date = document.getElementById('event-date').value;
+  const btn = document.getElementById('btn-upload');
+  const prog = document.getElementById('progress-wrap');
+  const fill = document.getElementById('progress-fill');
+  const ptxt = document.getElementById('progress-text');
+
+  btn.disabled = true;
+  prog.style.display = 'block';
+
+  let done = 0;
+  const errors = [];
+
+  for (const file of files) {
+    const ext = file.name.split('.').pop();
+    const slug = slugify(file.name, date);
+    const path = `${FOLDER}/${slug}.${ext}`;
+
+    ptxt.textContent = `Uploading ${file.name}…`;
+
+    try {
+      const content = await toBase64(file);
+      let sha = undefined;
+
+      // Check if file exists (to update rather than create)
+      try {
+        const check = await fetch(`${API}/repos/${REPO}/contents/${path}`, {
+          headers: { Authorization: `token ${token}` }
+        });
+        if (check.ok) {
+          const data = await check.json();
+          sha = data.sha;
+        }
+      } catch(_) {}
+
+      const body = {
+        message: `Add flyer: ${slug}`,
+        content,
+        branch: BRANCH,
+      };
+      if (sha) body.sha = sha;
+
+      const res = await fetch(`${API}/repos/${REPO}/contents/${path}`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `token ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        errors.push(`${file.name}: ${err.message}`);
+      }
+    } catch(e) {
+      errors.push(`${file.name}: ${e.message}`);
+    }
+
+    done++;
+    fill.style.width = `${Math.round((done / files.length) * 100)}%`;
+  }
+
+  prog.style.display = 'none';
+  btn.disabled = false;
+
+  if (errors.length) {
+    showStatus('Some files failed:\n' + errors.join('\n'), 'error');
+  } else {
+    showStatus(`${files.length} flyer${files.length > 1 ? 's' : ''} uploaded! They'll appear on the site within 1–2 minutes.`, 'success');
+    pendingFiles = [];
+    document.getElementById('preview-grid').innerHTML = '';
+    document.getElementById('file-input').value = '';
+    loadExisting();
+  }
+}
+
+async function loadExisting() {
+  const token = getToken();
+  if (!token) return;
+
+  const el = document.getElementById('existing-list');
+  el.innerHTML = '<div class="empty-msg">Loading…</div>';
+
+  try {
+    const res = await fetch(`${API}/repos/${REPO}/contents/${FOLDER}`, {
+      headers: { Authorization: `token ${token}` }
+    });
+
+    if (res.status === 404) {
+      el.innerHTML = '<div class="empty-msg">No flyers uploaded yet. Upload one above to get started.</div>';
+      return;
+    }
+
+    if (!res.ok) throw new Error('Could not reach GitHub. Check your token.');
+
+    const files = await res.json();
+    const images = files.filter(f => /\.(jpg|jpeg|png|webp|gif)$/i.test(f.name));
+
+    if (!images.length) {
+      el.innerHTML = '<div class="empty-msg">No flyers yet.</div>';
+      return;
+    }
+
+    el.innerHTML = '<div class="existing-list">' +
+      images.reverse().map(f => `
+        <div class="existing-item">
+          <img class="existing-thumb" src="https://raw.githubusercontent.com/${REPO}/${BRANCH}/${f.path}" alt="${f.name}">
+          <div class="existing-info">
+            <div class="fname">${f.name}</div>
+            <div class="fdate">On site now</div>
+          </div>
+          <button class="btn-delete" onclick="deleteFlyer('${f.path}', '${f.sha}', this)">Remove</button>
+        </div>
+      `).join('') +
+    '</div>';
+
+  } catch(e) {
+    el.innerHTML = `<div class="empty-msg" style="color:#e55;">${e.message}</div>`;
+  }
+}
+
+async function deleteFlyer(path, sha, btn) {
+  if (!confirm('Remove this flyer from the site?')) return;
+  const token = getToken();
+  btn.disabled = true;
+  btn.textContent = '…';
+
+  const res = await fetch(`${API}/repos/${REPO}/contents/${path}`, {
+    method: 'DELETE',
+    headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: `Remove flyer: ${path}`, sha, branch: BRANCH }),
+  });
+
+  if (res.ok) {
+    btn.closest('.existing-item').remove();
+  } else {
+    btn.disabled = false;
+    btn.textContent = 'Remove';
+    showStatus('Could not delete. Try again.', 'error');
+  }
+}
+
+function showStatus(msg, type) {
+  const el = document.getElementById('status-msg');
+  el.textContent = msg;
+  el.className = `status-msg ${type}`;
+  el.style.display = 'block';
+  setTimeout(() => { el.style.display = 'none'; }, 6000);
+}
+</script>
+</body>
+</html>
