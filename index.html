@@ -95,6 +95,7 @@
       <li><a href="#watch">Watch</a></li>
       <li><a href="#press">Press</a></li>
       <li><a href="#merch">Merch</a></li>
+      <li><a href="pages/flyers.html">Flyers</a></li>
     </ul>
 
     <a href="#booking" class="btn btn--gold btn--sm nav__cta">Book Her</a>
@@ -112,6 +113,7 @@
       <li><a href="#watch"   onclick="closeNav()">Watch</a></li>
       <li><a href="#press"   onclick="closeNav()">Press</a></li>
       <li><a href="#merch"   onclick="closeNav()">Merch</a></li>
+      <li><a href="pages/flyers.html" onclick="closeNav()">Flyers</a></li>
       <li><a href="#booking" onclick="closeNav()" class="btn btn--gold btn--block">Book Her</a></li>
     </ul>
   </div>
@@ -124,8 +126,7 @@
     <!-- Photo right panel — swap src when hi-res available -->
     <div class="hero__photo">
       <img
-        src="assets/images/hero.webp"
-        alt="Ms. Darkchild — mic raised to a wall of stage lights. Philadelphia comedian, host and actress since 1999."
+        src="assets/images/hero.webp"        alt="Ms. Darkchild — mic raised to a wall of stage lights. Philadelphia comedian, host and actress since 1999."
         width="1327" height="690"
         fetchpriority="high"
       >
@@ -272,7 +273,7 @@
             <img
               src="assets/images/headshot.webp"
               alt="Ms. Darkchild headshot — Anissa Bane, Philadelphia comedian"
-              width="400" height="496"
+              width="800" height="1067"
               loading="lazy"
             >
             <div class="about__photo-bar" aria-hidden="true"></div>
@@ -350,6 +351,75 @@
   <!-- ═══════════════════════════════════════
        SHOWS — Aug 16 featured + full list
   ═══════════════════════════════════════ -->
+<!-- FLYERS PREVIEW SECTION v2 -->
+  
+  <section id="flyers" style="padding: 5rem 1.5rem; background: #0d0d0d; text-align: center;">
+ 
+  <p style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C9A84C; margin-bottom: 0.75rem;">
+    Absolute Soul Entertainment
+  </p>
+  <h2 style="font-size: clamp(1.75rem, 5vw, 2.75rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem;">
+    Latest Event Flyers
+  </h2>
+  <p style="font-size: 14px; color: #777; margin-bottom: 2.5rem;">
+    Download &amp; share — help spread the word
+  </p>
+ 
+  <div id="home-flyers-grid" style="
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+  ">
+    <p style="color: #555; font-size: 13px; grid-column: 1/-1; padding: 2rem 0;">Loading flyers…</p>
+  </div>
+ 
+  <a href="pages/flyers.html" style="
+    display: inline-block;
+    border: 1px solid #C9A84C;
+    color: #C9A84C;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+  ">See All Flyers →</a>
+ 
+</section>
+ 
+<script>
+(function() {
+  var REPO   = 'aaron2047/darkchild-site';
+  var BRANCH = 'main';
+  var FOLDER = 'assets/flyers';
+  var RAW    = 'https://raw.githubusercontent.com/' + REPO + '/' + BRANCH;
+ 
+  fetch('https://api.github.com/repos/' + REPO + '/contents/' + FOLDER)
+    .then(function(r) { return r.ok ? r.json() : []; })
+    .then(function(files) {
+      var images = files
+        .filter(function(f) { return /\.(jpg|jpeg|png|webp|gif)$/i.test(f.name); })
+        .reverse()
+        .slice(0, 3);
+ 
+      var grid = document.getElementById('home-flyers-grid');
+ 
+      if (!images.length) {
+        grid.innerHTML = '<p style="color:#555;font-size:13px;grid-column:1/-1;padding:2rem 0;">Flyers coming soon — check back!</p>';
+        return;
+      }
+ 
+      grid.innerHTML = images.map(function(f) {
+        var src = RAW + '/' + f.path;
+        return '<a href="pages/flyers.html" style="display:block;border-radius:8px;overflow:hidden;border:1px solid rgba(201,168,76,0.2);transition:transform 0.2s;" onmouseover="this.style.transform=\'translateY(-3px)\'" onmouseout="this.style.transform=\'\'"><img src="' + src + '" alt="Event flyer" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;" loading="lazy"></a>';
+      }).join('');
+    })
+    .catch(function() {});
+})();
+</script>
+<!-- END FLYERS PREVIEW SECTION -->
   <section class="shows" id="shows" aria-labelledby="shows-heading">
 
     <!-- Purple section header -->
