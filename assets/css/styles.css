@@ -937,3 +937,7 @@ input, select, textarea { font-family: inherit; }
   transition: border-color var(--transition), color var(--transition);
 }
 .contact-card__social:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── CONTACT CARD FIXES ──────────────────────────────────────── */
+.contact-card { text-align: left; position: relative; z-index: 2; }
+.contact-card__linq { flex-wrap: wrap; }
