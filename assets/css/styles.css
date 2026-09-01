@@ -609,7 +609,7 @@ input, select, textarea { font-family: inherit; }
   pointer-events: none;
 }
 .booking__inner {
-  position: relative; z-index: 1;
+  position: relative; z-index: 5;
   max-width: 600px; margin: 0 auto; text-align: center;
 }
 .booking__title {
