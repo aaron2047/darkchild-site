@@ -611,6 +611,7 @@ input, select, textarea { font-family: inherit; }
 .booking__inner {
   position: relative; z-index: 5;
   max-width: 600px; margin: 0 auto; text-align: center;
+  overflow: hidden;
 }
  .booking__title {
   font-family: var(--font-display); font-size: clamp(40px,5vw,68px);
