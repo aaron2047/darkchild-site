@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ms. Darkchild — Flyer Admin</title>
+  <title>Ms. Darkchild — Admin</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -73,6 +73,14 @@
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 1rem;
+    }
+
+    .section-hint {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
     }
 
     label {
@@ -279,6 +287,7 @@
       border-radius: 8px;
       font-size: 13px;
       display: none;
+      white-space: pre-line;
     }
 
     .status-msg.success {
@@ -381,6 +390,25 @@
       font-size: 13px;
       padding: 1.5rem;
     }
+
+    .video-preview-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: -0.5rem;
+      margin-bottom: 1.25rem;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .video-preview-row img {
+      width: 64px;
+      height: 36px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: #111;
+    }
   </style>
 </head>
 <body>
@@ -389,7 +417,7 @@
 
   <div class="brand">
     <h1>Ms. Darkchild · Admin</h1>
-    <p>Flyer &amp; Event Manager</p>
+    <p>Flyer, Event &amp; Video Manager</p>
   </div>
 
   <!-- TOKEN SETUP -->
@@ -435,6 +463,36 @@
     <div class="status-msg" id="status-msg"></div>
   </div>
 
+  <!-- MANAGE VIDEOS -->
+  <div class="section" id="video-section">
+    <div class="section-label">Manage Videos</div>
+    <p class="section-hint">
+      Paste a link to a video that's already on YouTube — this points the site's
+      "Watch" boxes at it. It doesn't upload the video file itself, so there's no
+      size limit and nothing to re-upload later.
+    </p>
+
+    <label for="podcast-url">Latest Podcast Episode (YouTube link)</label>
+    <input type="text" id="podcast-url" placeholder="https://www.youtube.com/watch?v=...">
+    <div class="video-preview-row" id="podcast-preview" style="display:none;">
+      <img id="podcast-preview-thumb" alt="">
+      <span>Current thumbnail preview</span>
+    </div>
+
+    <label for="reel-url">Performance Reel (YouTube link)</label>
+    <input type="text" id="reel-url" placeholder="https://www.youtube.com/watch?v=...">
+    <div class="video-preview-row" id="reel-preview" style="display:none;">
+      <img id="reel-preview-thumb" alt="">
+      <span>Current thumbnail preview</span>
+    </div>
+
+    <button class="btn-upload" id="btn-save-videos" onclick="saveVideos()">
+      Save Videos
+    </button>
+
+    <div class="status-msg" id="video-status-msg"></div>
+  </div>
+
   <!-- EXISTING FLYERS -->
   <div class="section existing-section" id="existing-section">
     <div class="section-label">Published Flyers</div>
@@ -452,6 +510,7 @@
 const REPO  = 'aaron2047/darkchild-site';
 const BRANCH = 'main';
 const FOLDER = 'assets/flyers';
+const VIDEO_PATH = 'assets/data/videos.json';
 const API    = 'https://api.github.com';
 
 let pendingFiles = [];
@@ -467,6 +526,7 @@ function saveToken() {
   document.getElementById('gh-token').value = '';
   showStatus('Token saved in browser', 'success');
   loadExisting();
+  loadVideoConfig();
 }
 
 window.addEventListener('load', () => {
@@ -474,6 +534,7 @@ window.addEventListener('load', () => {
   if (t) {
     document.getElementById('gh-token').placeholder = 'Token saved — paste a new one to update';
     loadExisting();
+    loadVideoConfig();
   }
   setupDrop();
 });
@@ -685,6 +746,142 @@ async function deleteFlyer(path, sha, btn) {
 
 function showStatus(msg, type) {
   const el = document.getElementById('status-msg');
+  el.textContent = msg;
+  el.className = `status-msg ${type}`;
+  el.style.display = 'block';
+  setTimeout(() => { el.style.display = 'none'; }, 6000);
+}
+
+/* ───────────────────────────────
+   VIDEO LINK MANAGEMENT
+   ─────────────────────────────── */
+
+function extractYouTubeId(url) {
+  if (!url) return '';
+  url = url.trim();
+  const patterns = [
+    /youtu\.be\/([a-zA-Z0-9_-]{11})/,
+    /youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/,
+    /youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/,
+    /youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/,
+    /youtube\.com\/live\/([a-zA-Z0-9_-]{11})/,
+  ];
+  for (const p of patterns) {
+    const m = url.match(p);
+    if (m) return m[1];
+  }
+  if (/^[a-zA-Z0-9_-]{11}$/.test(url)) return url; // raw ID pasted directly
+  return '';
+}
+
+function updateVideoPreview(kind, videoId) {
+  const row = document.getElementById(`${kind}-preview`);
+  const img = document.getElementById(`${kind}-preview-thumb`);
+  if (!row || !img) return;
+  if (videoId) {
+    img.src = `https://img.youtube.com/vi/${videoId}/default.jpg`;
+    row.style.display = 'flex';
+  } else {
+    row.style.display = 'none';
+  }
+}
+
+async function loadVideoConfig() {
+  const token = getToken();
+  if (!token) return;
+
+  try {
+    const res = await fetch(`${API}/repos/${REPO}/contents/${VIDEO_PATH}`, {
+      headers: { Authorization: `token ${token}` }
+    });
+    if (!res.ok) return; // 404 is fine — no videos set yet
+
+    const data = await res.json();
+    const json = JSON.parse(decodeURIComponent(escape(atob(data.content))));
+
+    if (json.podcast && json.podcast.url) {
+      document.getElementById('podcast-url').value = json.podcast.url;
+      updateVideoPreview('podcast', json.podcast.videoId);
+    }
+    if (json.reel && json.reel.url) {
+      document.getElementById('reel-url').value = json.reel.url;
+      updateVideoPreview('reel', json.reel.videoId);
+    }
+  } catch(e) { /* ignore — leave fields blank */ }
+}
+
+async function saveVideos() {
+  const token = getToken();
+  if (!token) { showVideoStatus('Save your GitHub token first', 'error'); return; }
+
+  const podcastUrl = document.getElementById('podcast-url').value.trim();
+  const reelUrl = document.getElementById('reel-url').value.trim();
+
+  const podcastId = extractYouTubeId(podcastUrl);
+  const reelId = extractYouTubeId(reelUrl);
+
+  if (podcastUrl && !podcastId) {
+    showVideoStatus("That podcast link doesn't look like a YouTube URL", 'error');
+    return;
+  }
+  if (reelUrl && !reelId) {
+    showVideoStatus("That reel link doesn't look like a YouTube URL", 'error');
+    return;
+  }
+
+  const btn = document.getElementById('btn-save-videos');
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
+
+  const payload = {
+    podcast: { videoId: podcastId, url: podcastUrl },
+    reel: { videoId: reelId, url: reelUrl },
+  };
+
+  try {
+    let sha = undefined;
+    const check = await fetch(`${API}/repos/${REPO}/contents/${VIDEO_PATH}`, {
+      headers: { Authorization: `token ${token}` }
+    });
+    if (check.ok) {
+      const data = await check.json();
+      sha = data.sha;
+    }
+
+    const body = {
+      message: 'Update video links',
+      content: btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2)))),
+      branch: BRANCH,
+    };
+    if (sha) body.sha = sha;
+
+    const res = await fetch(`${API}/repos/${REPO}/contents/${VIDEO_PATH}`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `token ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.message);
+    }
+
+    updateVideoPreview('podcast', podcastId);
+    updateVideoPreview('reel', reelId);
+    showVideoStatus("Videos updated! They'll appear on the site within 1–2 minutes.", 'success');
+  } catch(e) {
+    showVideoStatus('Could not save: ' + e.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Save Videos';
+  }
+}
+
+function showVideoStatus(msg, type) {
+  const el = document.getElementById('video-status-msg');
   el.textContent = msg;
   el.className = `status-msg ${type}`;
   el.style.display = 'block';
