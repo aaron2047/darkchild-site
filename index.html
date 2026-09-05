@@ -782,5 +782,68 @@
   <!-- Scripts -->
   <script src="assets/js/main.js" defer></script>
 
+ <script>
+(function() {
+  let podcastVideoId = '';
+  let reelVideoId = '';
+
+  function ytEmbedUrl(id) {
+    return `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+  }
+  function ytThumb(id) {
+    return `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+  }
+  function darkenedThumb(id) {
+    return `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${ytThumb(id)}) center / cover`;
+  }
+
+  window.loadPodcastVideo = function() {
+    if (!podcastVideoId) return; // no video set yet — box just isn't clickable
+    const frame = document.getElementById('podcast-video-frame');
+    const placeholder = document.getElementById('podcast-player');
+    frame.innerHTML = `<iframe width="100%" height="100%" src="${ytEmbedUrl(podcastVideoId)}" title="Latest Podcast Episode" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="aspect-ratio:16/9;"></iframe>`;
+    frame.style.display = 'block';
+    placeholder.style.display = 'none';
+  };
+
+  window.loadVideo = function() {
+    if (!reelVideoId) return;
+    const frame = document.getElementById('video-frame');
+    const placeholder = document.getElementById('video-placeholder');
+    frame.innerHTML = `<iframe width="100%" height="100%" src="${ytEmbedUrl(reelVideoId)}" title="Performance Reel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="aspect-ratio:16/9;"></iframe>`;
+    frame.style.display = 'block';
+    placeholder.style.display = 'none';
+  };
+
+  fetch('assets/data/videos.json?t=' + Date.now())
+    .then(r => r.ok ? r.json() : null)
+    .then(cfg => {
+      if (!cfg) return;
+
+      if (cfg.podcast && cfg.podcast.videoId) {
+        podcastVideoId = cfg.podcast.videoId;
+        const el = document.getElementById('podcast-player');
+        if (el) {
+          el.style.background = darkenedThumb(podcastVideoId);
+          el.style.cursor = 'pointer';
+        }
+      }
+
+      if (cfg.reel && cfg.reel.videoId) {
+        reelVideoId = cfg.reel.videoId;
+        const el = document.getElementById('video-placeholder');
+        if (el) {
+          el.style.background = darkenedThumb(reelVideoId);
+        }
+        const label = document.getElementById('reel-video-label');
+        const sub = document.getElementById('reel-video-sub');
+        if (label) label.textContent = 'Performance Reel — Click to Watch';
+        if (sub) sub.textContent = '';
+      }
+    })
+    .catch(() => {});
+})();
+</script>
+
 </body>
 </html>
